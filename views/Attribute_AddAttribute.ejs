@@ -1,0 +1,227 @@
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+<style>
+    .switch.ios, .switch-on.ios, .switch-off.ios { border-radius: 20rem; }
+    .switch.ios .switch-handle { border-radius: 20rem; }
+  </style>
+    
+    
+      <!-- Navbar -->
+      <%-include('demoHeader');-%>
+      <!-- /.navbar -->
+               
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="
+    
+    
+    " class="brand-link">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <span class="brand-text font-weight-light" >REDEECOM</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item menu-open">
+          
+                <ul class="nav nav-treeview">
+                  
+                </ul>
+              </li>
+             
+             
+              <li class="nav-item">
+                <a href="adminDashboard" class="nav-link">
+                  <i class="nav-icon fab fa-firefox "></i>
+                  <p>
+                 Dashboard
+                  
+                  </p>
+                </a>
+               
+              </li>
+              <%
+              if(Sidebar.length!=0){
+              var i=1;
+              Sidebar.forEach(function(data){
+              %>
+              <li class="nav-item">
+                <a href="adminDashboard" class="nav-link">
+                  <i class="nav-icon fab fa-firefox "></i>
+                  <p>
+                    <%= data.att_name; %>
+                  
+                  </p>
+                </a>
+               
+              </li>
+              <% }) }%>
+             
+ 
+      <!-- Main Sidebar Container -->
+      <%-include('demoSidebar');-%>
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <br>
+          
+    
+                   <form action="/addattribute" method="post">
+                    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; ">
+                        <div class="div" style="margin-left: 10px; padding: 2%;">
+                        Add Attributes&nbsp;<i class="fas fa-paperclip"></i>
+                        </div>
+                    </div>
+                  <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+                        
+                    
+                <% if(message.length > 0) { %>
+                  <div class="alert alert-success">
+                    <%= message %>
+                  </div>
+                  <% }%>
+                    <div class="row">
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <label>Field Name:</label>
+                                <input type="text" class="form-control" name="name"  style="height: 3rem;"  placeholder="Enter Field Name" required>
+                                                               
+                              </div>
+                          
+                              
+                            </div>
+                            
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                  <label>Field Type:</label>
+                                  <select class="form-control" name="type"  style="height: 3rem;"   required>
+                                    <option >Select Type</option>
+                                    <option  value="0">Number</option>
+                                    <option value="1">Text</option>
+                                    <option value="2">Text Area</option>
+                                    <option value="3">Search Radio</option>
+                                    <option value="4">Searchable Checkbox</option>
+                                    <option value="5">Searchable Dropdown</option>
+                                    <option value="6">Color</option>
+                                  
+                                </select>                             
+                                </div>
+  
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="form-group">
+                                  <label>Position Type:</label>
+                                  <select class="form-control" name="position"  style="height: 3rem;"   required>
+                                    <option >Select Position Type</option>
+                                    <option value="0" >Global</option>
+                                    <option value="1" >Local</option>
+                                </select>                             
+                                </div>
+                            
+                                
+                              </div>
+                                                       
+                              
+                            
+                    
+                        
+    
+                          </div>
+                          <div class="row">
+                          
+                           
+                              <div class="col-sm-4">
+                                <div class="form-group">
+                                  <label>Number:</label>
+                                  <select  class="form-control" name="number"  style="height: 3rem;"  required>
+                                        <option>Select Number</option>
+                                        <option value="0">Single</option>
+                                        <option value="1">Multiple</option>
+                                        
+                                    </select>
+                                </div>
+                            
+                                
+                              </div>
+                              <div class="col-sm-4">
+                                <div class="form-group">
+                                  <label>IsParent:</label>
+                                  <select  class="form-control" name="isparent"  style="height: 3rem;"  required>
+                                        <option>Select Parent</option>
+                                        <option value="0">No</option>
+                                        <%
+                                        if(Sidebar.length!=0){
+                                        var i=1;
+                                        Sidebar.forEach(function(data){
+                                        %>
+                                        <option value="   <%= data.att_id; %>
+                                          ">   <%= data.att_name; %>
+                                        </option>
+                                        <% }) } %>
+                                    </select>
+                                </div>
+                            
+                                
+                              </div>
+      <!-- <div class="row"></div> -->
+                              
+                    
+                          </div>
+
+                            <div class="row">
+                          <button  class="btn" style="margin-top: 10px; background: linear-gradient(#e66465, #9198e5); color: rgb(0, 0, 0); margin-left: 5px;"><i class="fas fa-plus"></i> Add Medicine Attribute &nbsp;</button>
+                                </div>
+                      </div> 
+                
+                        
+                  
+                    </form>
+                    
+                </div>
+                
+            
+     
+       
+      
+    
+      
+    <%-include('demoFooter');-%>
+    
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    
+    <script>
+        $(function(){
+          document.getElementById('switch-two').switchButton({
+            onlabel: 'Enabled',
+            offlabel: 'Disabled'
+          });
+        });
+      </script>
+    </body>
+    </html>
+    

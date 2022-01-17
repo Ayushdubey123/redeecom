@@ -1,0 +1,169 @@
+<%-include('demoHeader'); -%>
+
+   
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="
+    
+    
+    " class="brand-link">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <span class="brand-text font-weight-light">REDEECOM</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+
+            <ul class="nav nav-treeview">
+
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="adminDashboard" class="nav-link">
+              <i class="nav-icon fab fa-firefox "></i>
+              <p>
+                Dashboard
+
+              </p>
+            </a>
+
+          </li>
+          <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
+            <li class="nav-item">
+              <a href="adminDashboard" class="nav-link">
+                <i class="nav-icon fab fa-firefox "></i>
+                <p>
+                  <%= data.att_name; %>
+
+                </p>
+              </a>
+
+            </li>
+            <% }) }%>
+
+<%-include('demoSidebar'); -%>
+
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top:3rem;">
+        <div class="div" style="margin-left: 15px;   padding: 2%;">
+       Delivery Boy List
+       <button  class="btn"  onclick="location.href='DeliveryBoy_AddDeliveryBoy'" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; float: right;"><i class="fas fa-plus-circle"></i> Add New Delivery Boy</button>
+
+        </div>
+    </div>
+
+
+        </div>
+
+
+      
+    </div>
+
+    <!--  -->
+    <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>#</th> 
+              <th>Delivery Boy Name </th>
+              <th>Delivery Boy Mobile</th>
+              <th>Delivery Boy Email</th>
+              <th>Delivery Boy Password</th>
+              <th>Delivery Boy Address</th>
+              <th>Delivery Boy Status</th>
+              <th>Delivery Boy App Commission</th>
+              <th>Action</th> 
+            </tr>
+            </thead>
+            <tbody>
+         
+         
+                <%
+                if(ListData.length!=0){
+                var i=1;
+                ListData.forEach(function(data){
+                %>
+            <tr>
+                <td><%=i++; %></td>
+              <td><%=data.delivery_name; %></td>
+              <td><%=data.mobile_no; %></td>
+            <td><%=data.delivery_email;%></td>
+            <td><%=data.delivery_password;%></td>
+            <td><%=data1.delivery_status;%></td>
+            <td><%=data.delivery_commission;%></td>
+            <td><%=data.deliveryboy_address;%></td>
+        
+            <td>
+                <button class="btn" style="background-color: rgb(221, 37, 37); color: white;"> Make Deactive</button>
+            </td>
+        </tr>
+        <% });}%>
+           
+          
+            </tbody>
+            <tfoot>
+           
+            </tfoot>
+          </table>
+          
+      </div> 
+
+    <!--  -->
+    
+
+  
+</div>
+<%-include('demoFooter');-%>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            // "buttons": ["excel","pdf","print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
+<!--  -->
