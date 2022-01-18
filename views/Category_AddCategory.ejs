@@ -1,0 +1,251 @@
+
+<style>
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+    </style>
+
+
+  <!-- Navbar -->
+  <%-include('demoHeader');-%>
+  <!-- /.navbar -->
+
+
+
+             
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="
+    
+    
+    " class="brand-link">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <span class="brand-text font-weight-light" >REDEECOM</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item menu-open">
+          
+                <ul class="nav nav-treeview">
+                  
+                </ul>
+              </li>
+             
+             
+              <li class="nav-item">
+                <a href="adminDashboard" class="nav-link">
+                  <i class="nav-icon fab fa-firefox "></i>
+                  <p>
+                 Dashboard
+                  
+                  </p>
+                </a>
+               
+              </li>
+              <%
+              if(Sidebar.length!=0){
+              var i=1;
+              Sidebar.forEach(function(data){
+              %>
+              <li class="nav-item">
+                <a href="adminDashboard" class="nav-link">
+                  <i class="nav-icon fab fa-firefox "></i>
+                  <p>
+                    <%= data.att_name; %>
+                  
+                  </p>
+                </a>
+               
+              </li>
+              <% }) }%>
+             
+  
+  <!-- Main Sidebar Container -->
+  <%-include('demoSidebar');-%>
+
+  
+   
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+               <form action="/save" method="post"  enctype="multipart/form-data">
+                <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
+                    <div class="div" style="margin-left: 10px;  padding: 2%;">
+                    Add Category
+                    </div>
+                    
+                </div>
+               
+              <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+             
+                <div class="alert">
+                  <% if(message.length > 0) { %>
+                    <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
+                      <%= message %>
+                    </div>
+                    <% }%>
+                  </div>
+                <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Category Name:</label>
+                            <input type="text" class="form-control"  name="name" required >
+                         
+                          </div>
+                         
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Category Icon:</label>
+                            <input type="file" class="form-control"    name="image" required>
+                           
+                          </div>
+                      
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Admin View:</label>
+                              <label class="switch">
+                                <input type="checkbox" name="admin_status">
+                                <span class="slider round"></span>
+                              </label>
+                            </div>
+                            
+                         
+                          
+                          </div>
+                          
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>User View:</label>
+                              <label class="switch" style="margin-right: -0.8rem;">
+                                <input style="margin-top: -1rem; " type="checkbox" name="user_status">
+                                <span class="slider round"></span>
+                              </label>
+                            </div>
+                            
+                         
+                          
+                          </div>
+                          </div>
+                            
+                         
+                            
+                         
+                          
+                          </div>
+
+
+                          <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i class="fas fa-plus-circle"></i> Add Category</button>
+                
+                      </div>
+                      
+                  </div> 
+            
+                </form> 
+              
+                  
+                
+            </div>
+            
+        
+ 
+   
+  
+
+  
+<%-include('demoFooter');-%>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
+
+</body>
+</html>

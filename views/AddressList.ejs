@@ -1,0 +1,114 @@
+<%-include('adminHeader'); -%>
+
+
+
+<%-include('adminSidebar'); -%>
+
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
+        <div class="div" style="margin-left: 15px; padding: 2%; ">
+      Address List
+       <!-- <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add Banner</button> -->
+
+        </div>
+    </div>
+
+
+        </div>
+
+
+      
+    </div>
+
+    <!--  -->
+    <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>#</th> 
+              <th>Full Address </th>
+              <th>House</th>
+              <th>Landmark</th>
+              <th>Type</th>
+            
+          
+            </tr>
+            </thead>
+            <tbody>
+         
+         
+            <tr>
+              <td>1</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>
+                 Home 
+              </td>
+     
+              
+            </tr>
+         
+            <tr>
+              <td>2 </td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>
+                  Office
+              </td>
+               
+          
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>
+                 Other 
+              </td>
+                
+          
+            </tr>
+           
+          
+            </tbody>
+            <tfoot>
+           
+            </tfoot>
+          </table>
+          
+      </div> 
+
+    <!--  -->
+    
+
+  
+</div>
+<%-include('adminFooter');-%>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            // "buttons": ["excel","pdf","print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+</body>
+</html>

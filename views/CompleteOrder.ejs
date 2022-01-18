@@ -1,0 +1,122 @@
+<style> 
+    .ami {
+      width: 20px;
+      height: 20px;
+      border-radius: 10rem;
+      background-color: rgb(225, 0, 255);
+      animation-name: example;
+      animation-duration: 30s;
+    }
+    
+    @keyframes example {
+        0%   {background-color: red;}
+  10%  {background-color: yellow;}
+  20%  {background-color: blue;}
+  30% {background-color: green;}
+  0%   {background-color: rgb(42, 124, 179);}
+  15%  {background-color: rgb(201, 102, 9);}
+  10%  {background-color: rgb(6, 6, 49);}
+  10% {background-color: rgb(34, 228, 34);}
+    }
+    </style>
+<%-include('demoHeader'); -%>
+
+
+
+<%-include('demoSidebar'); -%>
+
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
+        <div class="div" style="margin-left: 15px;  padding: 2%; ">
+      Completed Order List
+   
+
+        </div>
+    </div>
+
+
+        </div>
+
+
+      
+    </div>
+
+    <!--  -->
+    <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>#</th> 
+              <th>Order Id</th>
+              <th>Order Date</th>
+              <th>Current Status</th>
+              <th>Preview Data</th>
+
+            </tr>
+            </thead>
+            <tbody>
+         
+         
+            <tr>
+              <td>
+                  <div class="ami"></div>
+                </td>
+              <td>3</td>
+              <td>09-09-2021</td>
+             
+              <td>Completed</td>
+           
+                <td>
+                    <button class="btn" style="background-color: rgb(55, 12, 75); color: white; font-weight: 500;">Preview</button>
+                    </td>
+                   
+            </tr>
+         
+           
+            
+           
+          
+            </tbody>
+            <tfoot>
+           
+            </tfoot>
+          </table>
+          
+      </div> 
+
+    <!--  -->
+    
+
+  
+</div>
+<%-include('demoFooter');-%>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            // "buttons": ["excel","pdf","print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+</body>
+</html>
+
+
+<!-- 
+
+<!--  -->

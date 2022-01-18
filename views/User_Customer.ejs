@@ -1,0 +1,128 @@
+<%-include('demoHeader'); -%>
+
+
+
+<%-include('demoSidebar'); -%>
+
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem;">
+        <div class="div" style="margin-left: 15px;  padding: 2%;">
+      Customer List
+       <!-- <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add Banner</button> -->
+
+        </div>
+    </div>
+
+
+        </div>
+
+
+      
+    </div>
+
+    <!--  -->
+    <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>#</th> 
+              <th>Full Name </th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Status</th>
+              <th>Action</th>
+          
+            </tr>
+            </thead>
+            <tbody>
+         
+         
+            <tr>
+              <td>1</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>
+                  <button class="btn "  style="background-color: rgb(235, 78, 78); color: white; border-radius: 4rem;">Make Deactive</button>
+              </td>
+                <td>
+                    <button class="btn" style="background-color: rgb(235, 78, 78); "><i class=" fas fa-trash-alt" style="color: white;"></i></button>&nbsp;&nbsp;&nbsp;
+                    <button class="btn" onclick="location.href='AddressList'" style="background-color: rgb(16, 76, 241);"><i class="fas fa-map-marker-alt" style="color: white;"></i></button>
+                    </td>
+              
+            </tr>
+         
+            <tr>
+              <td>2 </td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>
+                  <button class="btn "   style="background-color: rgb(235, 78, 78); color: white; border-radius: 4rem;">Make Deactive</button>
+              </td>
+                <td>
+                    <button class="btn" style="background-color: rgb(235, 78, 78); "><i class=" fas fa-trash-alt" style="color: white;"></i></button>&nbsp;&nbsp;&nbsp;
+                    <button class="btn" onclick="location.href='AddressList'" style="background-color: rgb(16, 76, 241);"><i class="fas fa-map-marker-alt" style="color: white;"></i></button>
+                    </td>
+          
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>--------------</td>
+              <td>
+                  <button  class="btn " style="background-color: rgb(235, 78, 78); color: white; border-radius: 4rem;">Make Deactive</button>
+              </td>
+                <td>
+                    <button class="btn" style="background-color: rgb(235, 78, 78); "><i class=" fas fa-trash-alt" style="color: white;"></i></button>&nbsp;&nbsp;&nbsp;
+                    <button class="btn" onclick="location.href='AddressList'" style="background-color: rgb(16, 76, 241);"><i class="fas fa-map-marker-alt" style="color: white;"></i></button>
+                    </td>
+          
+            </tr>
+           
+          
+            </tbody>
+            <tfoot>
+           
+            </tfoot>
+          </table>
+          
+      </div> 
+
+    <!--  -->
+    
+
+  
+</div>
+<%-include('demoFooter');-%>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            // "buttons": ["excel","pdf","print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+</body>
+</html>
+
+
+<!-- 
+
+<!--  -->
