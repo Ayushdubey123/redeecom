@@ -41,33 +41,45 @@ const con=mysql.createConnection({
   });
   
   con.connect((err)=>{
-    if(err)throw err;
+    if(err) throw err;
     console.log("");
   });
 
+
+  
   router.get('/adminDashboard', function(req, res, next) {
+    if (req.session.loggedin) {
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
      res.render('adminDashboard', {Sidebar: data});
    });
-   
+  } else {
+    req.flash('success', 'Please login first!');
+    res.redirect('/');
+  }
   }); 
 
   router.get('/Category' , function(req, res, next) {
+    if (req.session.loggedin) {
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
      res.render('Category_AddCategory',{message : req.flash('message'),Sidebar:data});
    });
-   
+  } else {
+    req.flash('success', 'Please login first!');
+    res.redirect('/');
+  }
   });
 
 router.post('/save', upload.single('image'),(req,res)=>{
     //  sessions = req.session;
+    if (req.session.loggedin) {
+
     console.log(JSON.stringify(req.file))
     const name= req.body.name;
-    const image=req.file.path;
+    const image="uploads/"+req.file.filename;
     
     const user_status=req.body.user_status;
     const admin_status=req.body.admin_status;
@@ -94,10 +106,14 @@ router.post('/save', upload.single('image'),(req,res)=>{
     })
     // res.end();
   
-  
+  } else {
+    req.flash('success', 'Please login first!');
+    res.redirect('/');
+  }
   });
 
   router.get('/CategoryList', function(req, res, next) {
+    if (req.session.loggedin) {
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
@@ -109,12 +125,17 @@ router.post('/save', upload.single('image'),(req,res)=>{
 
    });
   });
+} else {
+  req.flash('success', 'Please login first!');
+  res.redirect('/');
+}
   });
 
   
   
   
   router.get('/CategoryEdit', function(req, res, next) {
+    if (req.session.loggedin) {
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
@@ -124,22 +145,16 @@ router.post('/save', upload.single('image'),(req,res)=>{
     res.render('Category_EditCategory', { ListData: data1,Sidebar:data});
   });
 });
+} else {
+  req.flash('success', 'Please login first!');
+  res.redirect('/');
+}
   });
   
-  router.get('/CategoryDelete', function(req, res, next) {
-    var sql='DELETE FROM category_master where cat_id='+req.query.id;
-   con.query(sql, function (err, data, fields) {
-    if (err) throw err;
-   
-   
-   
-    req.flash('message','Data Delete Successfully');
-    return  res.redirect("CategoryList");
-  });
-  
-  });
+
   
   router.get('/catstatus', function(req, res, next) {
+    if (req.session.loggedin) {
     var sql='UPDATE  category_master set cat_status='+ req.query.val +' where cat_id='+req.query.id;
     
    con.query(sql, function (err, data, fields) {
@@ -147,12 +162,16 @@ router.post('/save', upload.single('image'),(req,res)=>{
     req.flash('message','Data Updated Successfully');
     return  res.redirect("CategoryList");
   });
-  
+} else {
+  req.flash('success', 'Please login first!');
+  res.redirect('/');
+}
   });
   
   
   router.post('/CategoryUpdate', upload.single('image'),(req,res)=>{
     //  sessions = req.session;
+    if (req.session.loggedin) {
     console.log(JSON.stringify(req.file))
     const name= req.body.name;
     const user_status=req.body.user_status;
@@ -160,8 +179,8 @@ router.post('/save', upload.single('image'),(req,res)=>{
    
   
   if(req.file!=null){
-    const image=req.file.path;
-  
+    // const image=req.file.path;
+    const image="uploads/"+req.file.filename;
   
     const insertQuery = "Update  category_master set cat_name=?,cat_image=?,user_status=?,admin_status=?  WHERE cat_id = ? ";
     const values =[name,image,user_status,admin_status,req.query.id]
@@ -202,8 +221,25 @@ router.post('/save', upload.single('image'),(req,res)=>{
    
    
     // res.end();
+  } else {
+    req.flash('success', 'Please login first!');
+    res.redirect('/');
+  }
   
-  
+  });
+
+  router.get('/CategoryDelete', function(req, res, next) {
+    if (req.session.loggedin) {
+    var sql='DELETE FROM category_master where cat_id='+req.query.id;
+   con.query(sql, function (err, data, fields) {
+    if (err) throw err;
+    req.flash('message','Data Delete Successfully');
+    return  res.redirect("CategoryList");
+  });
+} else {
+  req.flash('success', 'Please login first!');
+  res.redirect('/');
+}
   });
 
   module.exports = router;

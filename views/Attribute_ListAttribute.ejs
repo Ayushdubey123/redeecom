@@ -99,29 +99,38 @@
               <th>Field Type</th>
               <th>Position Type</th>
               <th>Number</th>
+              <th>Parent</th>
              
               <th>Action</th>
           
             </tr>
             </thead>
-            <tbody>
+           
          
-         
+              <%
+              if(ListData.length!=0){
+              var i=1;
+              var fieldtype=['Number','Text','Text Area','Search Radio','Searchable Checkbox','Searchable Dropdown','Color'];
+              ListData.forEach(function(data1){
+              var    a=ListData.find(user => { return user.att_id==data1.isparent})  
+              %>
             <tr>
-              <td>1</td>
-              <td>----------</td>
-              <td>----------</td>
-              <td>----------</td>
-              <td>----------</td>
+              <td><%=i++; %></td>
+              <td><%=data1.att_name; %></td>
+              <td><%= field[data1.att_type]; %></td>
+              <td><%=data1.att_position==0?'Global':'Local'; %></td>
+              <td><%=data1.att_number==0?'Single':'Multiple'; %></td>
+              <td><%=  data1.isparent==0?'Noparent':a.att_name   ; %></td>
               
              
               <td>
-                <div class="buttom" style="display: flex;">
-                    <button class="btn" onclick="location.href='Attribute_EditAttribute'" style="background-color:rgb(57, 168, 57) ; color: white;">Edit</button>&nbsp;&nbsp;
-                    <button class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Delete</button>
-                      </div>
+            
+                  <a href="/EditAttribute?id=<%=data1.att_id; %>"><i class="fas fa-edit" style=" color:rgb(37, 112, 250); font-size: 1.5rem;"></i></a>&nbsp;
+                  <a href="/attributeDelete?id=<%=data1.att_id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
+                  
                 </td>
             </tr>
+            <% }) }%>
             </tbody>
             <tfoot>
            

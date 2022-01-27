@@ -84,7 +84,7 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <br>
-          
+          <!-- In Add Attribute - If user can select any parent data then this data is made  child  and if user is select No then create Parent Box -->
     
                    <form action="/addattribute" method="post">
                     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; ">
@@ -95,7 +95,12 @@
                   <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
                         
                     
-                <% if(message.length > 0) { %>
+                <% if(message.length > 0) { 
+                
+                  %>
+
+
+               
                   <div class="alert alert-success">
                     <%= message %>
                   </div>
@@ -104,7 +109,7 @@
                             <div class="col-sm-4">
                               <div class="form-group">
                                 <label>Field Name:</label>
-                                <input type="text" class="form-control" name="name"  style="height: 3rem;"  placeholder="Enter Field Name" required>
+                                <input type="text" class="form-control" name="att_name"  style="height: 3rem;"  placeholder="Enter Field Name" required>
                                                                
                               </div>
                           
@@ -114,15 +119,13 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Field Type:</label>
-                                  <select class="form-control" name="type"  style="height: 3rem;"   required>
+                                  <select class="form-control" name="att_type"   style="height: 3rem;"   required>
                                     <option >Select Type</option>
-                                    <option  value="0">Number</option>
-                                    <option value="1">Text</option>
-                                    <option value="2">Text Area</option>
-                                    <option value="3">Search Radio</option>
-                                    <option value="4">Searchable Checkbox</option>
-                                    <option value="5">Searchable Dropdown</option>
-                                    <option value="6">Color</option>
+                                 <% var i=0; field.forEach(function(data){%>
+
+
+                                    <option    value="<%= i %>"><%= data %></option>
+                                 <% i++ })%>
                                   
                                 </select>                             
                                 </div>
@@ -131,10 +134,10 @@
                               <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Position Type:</label>
-                                  <select class="form-control" name="position"  style="height: 3rem;"   required>
+                                  <select class="form-control" name="att_position"  style="height: 3rem;"   required>
                                     <option >Select Position Type</option>
-                                    <option value="0" >Global</option>
-                                    <option value="1" >Local</option>
+                                    <option value="0"   >Global</option>
+                                    <option value="1">Local</option>
                                 </select>                             
                                 </div>
                             
@@ -153,10 +156,10 @@
                               <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Number:</label>
-                                  <select  class="form-control" name="number"  style="height: 3rem;"  required>
+                                  <select  class="form-control" name="att_number"  style="height: 3rem;"  required>
                                         <option>Select Number</option>
-                                        <option value="0">Single</option>
-                                        <option value="1">Multiple</option>
+                                        <option value="0" >Single</option>
+                                        <option value="1" >Multiple</option>
                                         
                                     </select>
                                 </div>
@@ -167,15 +170,14 @@
                                 <div class="form-group">
                                   <label>IsParent:</label>
                                   <select  class="form-control" name="isparent"  style="height: 3rem;"  required>
-                                        <option>Select Parent</option>
+                                     
                                         <option value="0">No</option>
                                         <%
-                                        if(Sidebar.length!=0){
+                                        if(parent.length!=0){
                                         var i=1;
-                                        Sidebar.forEach(function(data){
+                                        parent.forEach(function(data){
                                         %>
-                                        <option value="   <%= data.att_id; %>
-                                          ">   <%= data.att_name; %>
+                                        <option value="<%= data.att_id; %>">   <%= data.att_name; %>
                                         </option>
                                         <% }) } %>
                                     </select>

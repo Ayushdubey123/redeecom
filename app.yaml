@@ -1,0 +1,7 @@
+service: node
+runtime: nodejs14
+
+manual_scaling:
+  instances: 1
+beta_settings:
+  cloud_sql_instances: redeecom:us-central1:redeecomdata

@@ -67,14 +67,83 @@
       <!-- Navbar -->
       <%-include('demoHeader');-%>
       <!-- /.navbar -->
-    
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="
+        
+        
+        " class="brand-link">
+          <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+          <span class="brand-text font-weight-light">REDEECOM</span>
+        </a>
+      
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+      
+      
+          <!-- SidebarSearch Form -->
+          <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+              <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-sidebar">
+                  <i class="fas fa-search fa-fw"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+              <li class="nav-item menu-open">
+      
+                <ul class="nav nav-treeview">
+      
+                </ul>
+              </li>
+      
+      
+              <li class="nav-item">
+                <a href="adminDashboard" class="nav-link">
+                  <i class="nav-icon fab fa-firefox "></i>
+                  <p>
+                    Dashboard
+      
+                  </p>
+                </a>
+      
+              </li>
+              <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
+                <li class="nav-item">
+                  <a href="adminDashboard" class="nav-link">
+                    <i class="nav-icon fab fa-firefox "></i>
+                    <p>
+                      <%= data.att_name; %>
+      
+                    </p>
+                  </a>
+      
+                </li>
+                <% }) }%>
+      
+      
       <!-- Main Sidebar Container -->
       <%-include('demoSidebar');-%>
     
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-    
-                   
+        <form action="/addbanner" method="post"  enctype="multipart/form-data">
+          <div class="alert">
+            <% if(message.length > 0) { %>
+              <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
+                <%= message %>
+              </div>
+              <% }%>
+            </div>
                     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
                         <div class="div" style="margin-left: 10px;  padding: 2%;">
                         Add Banner
@@ -86,7 +155,7 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label>Banner Image:</label>
-                                <input type="file" class="form-control" >
+                                <input type="file" name="banner_image" class="form-control" >
                                
                               </div>
                           
@@ -95,24 +164,29 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label>Select Category:</label>
-                                  <input type="text" class="form-control" name="firstname" >
+                                  <select  class="form-control" name="cat_name"  style="height: 3rem;"  required>
+                                    <option>Select Parent</option>
+                                    <option value="0">No</option>
+                                    <%
+                                    if(Sidebar.length!=0){
+                                    var i=1;
+                                    Sidebar.forEach(function(data){
+                                    %>
+                                    <option value="   <%= data.att_id; %>
+                                      ">   <%= data.att_name; %>
+                                    </option>
+                                    <% }) } %>
+                                </select>
                                
                                 </div>
                                
                               </div>
-                              <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Status:</label>
-                                  <input type="text" class="form-control" name="firstname" >
-                               
-                                </div>
-                               
-                              </div>
+                          
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label>Admin View:</label>
                                   <label class="switch">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="admin_status">
                                     <span class="slider round"></span>
                                   </label>
                                 </div>
@@ -125,7 +199,7 @@
                                 <div class="form-group">
                                   <label>User View:</label>
                                   <label class="switch">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="status">
                                     <span class="slider round"></span>
                                   </label>
                                 </div>
@@ -143,7 +217,7 @@
                 
                         
                   
-                      
+                      </form>
                     
                 </div>
                 

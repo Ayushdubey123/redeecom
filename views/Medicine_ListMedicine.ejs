@@ -111,24 +111,29 @@
               <%
               if(ListData.length!=0){
               var i=1;
-              ListData.forEach(function(data){
+              
+              ListData.forEach(function(data5){
+
+                var category= catdata.find(cat_detail=>{return data5.category==cat_detail.cat_id})
               %>
             <tr>
               <td><%=i++; %></td>
-              <td><img src="<%=data.image; %>" height="80" width="100"></td>
-              <td><%=data.name; %></td>
+              <td><img src="<%=data5.image; %>" height="80" width="80" border-radius="5px"></td>
+              <td><%=data5.name; %></td>
              
-              <td><%=data.instock==1 ?'Out Of Stock':'in Stock'; %></td>
-              <td><%=data.status==1 ?'Deactive':'Active '; %></td>
-              <td><%=data.price; %></td>
-              <td><%=data.category; %></td>
+              <td><%=data5.instock==1 ?'Out Of Stock':'in Stock'; %></td>
+              <td><%=data5.status==1 ?'Deactive':'Active '; %></td>
+              <td><%=data5.price; %></td>
+              <td>
+                    <%= category.cat_name; %>
+                </td>
               
               
              
               <td>
                 <div class="buttom" style="display: flex;">
-                    <a href="/Medicine_EditMedicine?id=<%=data.id; %>" class="btn"  style="background-color:rgb(57, 168, 57) ; color: white;">Edit</a>&nbsp;&nbsp;
-                    <a href="/MedicineDelete?id=<%=data.id; %>" class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Delete</a>
+                    <a href="/Medicine_EditMedicine?id=<%=data5.id; %>" class="btn"  style="background-color:rgb(57, 168, 57) ; color: white;">Edit</a>&nbsp;&nbsp;
+                    <a href="/MedicineDelete?id=<%=data5.id; %>&file=<%=data5.image; %>" class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Delete</a>
                       </div>
                 </td>
             </tr>

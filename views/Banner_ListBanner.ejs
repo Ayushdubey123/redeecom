@@ -1,5 +1,68 @@
 <%-include('demoHeader'); -%>
 
+<!-- /.navbar -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="
+  
+  
+  " class="brand-link">
+    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <span class="brand-text font-weight-light">REDEECOM</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item menu-open">
+
+          <ul class="nav nav-treeview">
+
+          </ul>
+        </li>
+
+
+        <li class="nav-item">
+          <a href="adminDashboard" class="nav-link">
+            <i class="nav-icon fab fa-firefox "></i>
+            <p>
+              Dashboard
+
+            </p>
+          </a>
+
+        </li>
+        <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
+          <li class="nav-item">
+            <a href="adminDashboard" class="nav-link">
+              <i class="nav-icon fab fa-firefox "></i>
+              <p>
+                <%= data.att_name; %>
+
+              </p>
+            </a>
+
+          </li>
+          <% }) }%>
 
 
 <%-include('demoSidebar'); -%>
@@ -7,6 +70,13 @@
 
 
 <div class="content-wrapper">
+  <div class="alert">
+    <% if(message.length > 0) { %>
+      <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
+        <%= message %>
+      </div>
+      <% }%>
+    </div>
     <div class="row">
         <div class="col-12">
     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
@@ -30,7 +100,7 @@
             <thead>
             <tr>
               <th>#</th> 
-              <th>Banner Name </th>
+             
               <th>Banner Image</th>
               <th>Status</th>
               <th>Action</th>
@@ -39,47 +109,32 @@
             </tr>
             </thead>
             <tbody>
-         
+              <%
+              if(ListData.length!=0){
+              var i=1;
+              ListData.forEach(function(data1){
+              %>
          
             <tr>
-              <td>1</td>
-              <td>Medicine</td>
-              <td>Img</td>
-              <td>       <button  class="btn " style="width: 8rem; background-color: rgb(107, 231, 118); border-radius: 5rem;"> Save</button></td>
+              <td><%=i++; %></td>
+              <td><img src="<%=data1.banner_image; %>" height="50" width="50"></td>
+              
+              <!-- <td>     <a href="/bannerstatus?id=<%=data1.id; %>&val=<%=data1.banner_status==0 ?1:0; %>" class="btn " style=" background-color: rgb(107, 231, 118); border-radius: 5rem;" >  <%= data1.banner_status == 0 ?'Publish' :'Unpublish' %></a></td> -->
+              <td><a href="/bannerstatus?id=<%=data1.id; %>&val=<%=data1.banner_status==0 ?1:0; %>" class="btn " style=" background-color: rgb(107, 231, 118); border-radius: 5rem;" >  <%= data1.banner_status == 0 ?'Publish' :'Unpublish' %></a></td>
               <td>
                   
-                <button mat-button  onclick="location.href='Banner_EditBanner'"  style="background-color: rgba(22, 62, 236, 0.897); height: 2rem; border-radius: 5px; color: white;">Edit</button>&nbsp;
-                <button mat-button style="background-color: rgb(233, 95, 95);  height: 2rem;border-radius: 5px;color: white; ">Delete</button>   
+              
+                <a href="/Banner_EditBanner?id=<%=data1.id; %>"><i class="fas fa-edit" style=" color:rgb(37, 112, 250); font-size: 1.5rem;"></i></a>&nbsp;
+                <a href="/bannerDelete?id=<%=data1.id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
+                
               </td>
               
           
             </tr>
          
-            <tr>
-              <td>2 </td>
-              <td>Medicine</td>
-              <td>Img</td>
-              <td>       <button  class="btn " style="width: 8rem; background-color: rgb(107, 231, 118); border-radius: 5rem;"> Save</button></td>
-              <td>
-                  
-                <button mat-button   onclick="location.href='Banner_EditBanner'"  style="background-color: rgba(22, 62, 236, 0.897); height: 2rem; border-radius: 5px; color: white;">Edit</button>&nbsp;
-                <button mat-button style="background-color: rgb(233, 95, 95);  height: 2rem;border-radius: 5px; color: white;">Delete</button>  
-              </td>
-          
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Medicine</td>
-              <td>Img</td>
-              <td>       <button  class="btn " style="width: 8rem; background-color: rgb(107, 231, 118); border-radius: 5rem;"> Save</button></td>
-              <td>
-                  
-                <button mat-button   onclick="location.href='Banner_EditBanner'"  style="background-color: rgba(22, 62, 236, 0.897); height: 2rem; border-radius: 5px; color: white;">Edit</button>&nbsp;
-                <button mat-button style="background-color: rgb(233, 95, 95);  height: 2rem;border-radius: 5px;color: white; ">Delete</button>   
-              </td>
-          
-            </tr>
-           
+            
+         
+            <% }) }%>
           
             </tbody>
             <tfoot>

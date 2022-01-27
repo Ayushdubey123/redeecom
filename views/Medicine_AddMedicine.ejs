@@ -90,184 +90,252 @@
                 <!-- Content Wrapper. Contains page content -->
                 <div class="content-wrapper">
                   <div class="alert">
-                    <% if(message.length > 0) { %>
+                    <% if(message.length> 0) { %>
                       <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
                         <%= message %>
                       </div>
                       <% }%>
-                    </div>
-      <form action="/addmedicine" method="post" enctype="multipart/form-data">
-                  <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
-                    <div class="div" style="margin-left: 10px; padding: 2%;">
-                      Add Medicine&nbsp;<i class="fas fa-pills"></i>
-                    </div>
                   </div>
-                  <div class="card-body"
-                    style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
-
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="form-group">
-                          <label> Featured Image:</label>
-                          <input type="file" class="form-control" name="image" style="height: 3rem;"
-                            placeholder="Enter Delivery Boy Name" required>
-
-                        </div>
+                  <form action="/addmedicine" method="post" enctype="multipart/form-data">
+                    <div class="card"
+                      style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
+                      <div class="div" style="margin-left: 10px; padding: 2%;">
+                        Add Medicine&nbsp;<i class="fas fa-pills"></i>
                       </div>
-                      <div class="col-6">
-                        <div class="form-group">
-
-                          <label>Medicine Name:</label>
-                          <input type="text" class="form-control" name="name" style="height: 3rem;"
-                            placeholder="Entre Medicine Title" required>
-
-
-                        </div>
-                      </div>
-                     
                     </div>
+                    <div class="card-body"
+                      style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
 
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="form-group">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label> Featured Image:</label>
+                            <input type="file" class="form-control" name="image" style="height: 3rem;"
+                              placeholder="Enter Delivery Boy Name" required>
 
-                          <label>Medicine InStock:</label>
-                          <div>
-                          <input type="checkbox" data-toggle="switchbutton" name="instock" checked data-style="ios">
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+
+                            <label>Medicine Name:</label>
+                            <input type="text" class="form-control" name="name" style="height: 3rem;"
+                              placeholder="Entre Medicine Title" required>
+
+
+                          </div>
                         </div>
 
-                        </div>
                       </div>
-                      <div class="col-6">
-                        <div class="form-group">
-                          <label>Medicine Status:</label>
-                          <div>
-                            <input type="checkbox" data-toggle="switchbutton" name="status" value="0" checked data-style="ios">
+
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+
+                            <label>Medicine InStock:</label>
+                            <div>
+                              <input type="checkbox" data-toggle="switchbutton" name="instock" checked data-style="ios">
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label>Medicine Status:</label>
+                            <div>
+                              <input type="checkbox" data-toggle="switchbutton" name="status" value="0" checked
+                                data-style="ios">
+                            </div>
+
+                          </div>
                         </div>
 
-                        </div>
                       </div>
-                  
-                    </div>
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="form-group">
-                          <label>Medicine Price:</label>
-                          <input type="text" class="form-control" name="price" style="height: 3rem;" placeholder="Enter Medicine Price" required>
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label>Medicine Price:</label>
+                            <input type="text" class="form-control" name="price" style="height: 3rem;"
+                              placeholder="Enter Medicine Price" required>
 
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-group">
+                        <div class="col-6">
+                          <div class="form-group">
 
-                          <label>Medicine Category:</label>
-                          <div>
-                           <!-- <input type="checkbox" data-toggle="switchbutton" checked data-style="ios"> -->
-                          <select  class="form-control" name="category" style="height: 3rem;" placeholder="Enter Medicine Category" required>
-                           
-                <%
-                if(catdata.length!=0){
-                var i=1;
-                catdata.forEach(function(data){
-                %>
-                            <option value="<%=data.cat_id; %>"><%=data.cat_name; %></option>
-                            <% }) }%>
+                            <label>Medicine Category:</label>
+                            <div>
+                              <!-- <input type="checkbox" data-toggle="switchbutton" checked data-style="ios"> -->
+                              <select class="form-control" name="category" style="height: 3rem;"
+                                placeholder="Enter Medicine Category" required>
+
+                                <% if(catdata.length!=0){ var i=1; catdata.forEach(function(data){ %>
+                                  <option value="<%=data.cat_id; %>">
+                                    <%=data.cat_name; %>
+                                  </option>
+                                  <% }) }%>
                               </select>
+                            </div>
+
+                          </div>
                         </div>
 
-                        </div>
                       </div>
-                      
-                    </div>
-                    <% if(attributes.length != 0){ 
-                      attributes.forEach(function(data){
-                         %>
-                    <div class="row">
-                     
-                         
-                               <div class="col-6">
-                                <div class="form-group">
-                          <label><%= data.att_name%></label>
-                         <% if (data.att_type==0) {%>
-                            <input type="number" class="form-control" name="<%= data.key_name%>" style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required>
-                        <%
-                          }else  if (data.att_type==1) {
-                         %>
-                         <input type="text" class="form-control" name="<%= data.key_name%>" style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required>
-                         <%
-                          }else  if (data.att_type==2) {
-                         %>
-                         <textarea class="form-control" name="<%= data.key_name%>" style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required></textarea>
-                         
-                         <%
-                        }else  if (data.att_type==3) {
-                       %>
-                       <select class="form-control select2" name="<%= data.key_name%>">
-                        <option >Select <%= data.att_name %></option>
-                        <% if(attributesData.length != 0){ 
-                          attributesData.forEach(function(attdata){
-                            if(data.att_id==attdata.att_id){
-                             %>
-                        <option ><%= attdata.value %></option>
-                        <% } }) } %>
-                      </select>
-                    
-                       <%
-                      }else  if (data.att_type==4) {
-                     %>
-                     <select class="form-control select2" multiple name="<%= data.key_name%>">
-                      <option >Select <%= data.att_name %></option>
-                      <% if(attributesData.length != 0){ 
-                        attributesData.forEach(function(attdata){
-                          if(data.att_id==attdata.att_id){
-                           %>
-                      <option ><%= attdata.value %></option>
-                      <% } }) } %>
-                    </select>
-                  
-                     
-                     <%
-                    }else  if (data.att_type==5) {
-                   %>
-                   <select class="form-control select2" name="<%= data.key_name%>">
-                    <option >Select <%= data.att_name %></option>
-                    <% if(attributesData.length != 0){ 
-                      attributesData.forEach(function(attdata){
-                        if(data.att_id==attdata.att_id){
-                         %>
-                    <option ><%= attdata.value %></option>
-                    <% } }) } %>
-                  </select>
+                      <% if(attributes.length !=0){ attributes.forEach(function(data){ %>
+                        <div class="row" style="border:solid 1px; margin-Top:5px">
 
-                   <%
-                    }else  if (data.att_type==6) {
-                   %>
-                   <input type="color" class="form-control" name="<%= data.key_name%>" style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required>
-                 
-                 <% } %>
+
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label>
+                                <%= data.parent_detail.att_name %>
+                              </label>
+                              <% if (data.parent_detail.att_type==0) {%>
+                                <input type="number" class="form-control"
+                                  name="<%= data.parent_detail.parent_detail.key_name %>" style="height: 3rem;"
+                                  placeholder="Enter <%= data.parent_detail.att_name%>" required>
+                                <% }else if (data.parent_detail.att_type==1) { %>
+                                  <input type="text" class="form-control" name="<%= data.parent_detail.key_name%>"
+                                    style="height: 3rem;" placeholder="Enter <%= data.parent_detail.att_name%>"
+                                    required>
+                                  <% }else if (data.parent_detail.att_type==2) { %>
+                                    <textarea class="form-control" name="<%= data.parent_detail.key_name%>"
+                                      style="height: 3rem;" placeholder="Enter <%= data.parent_detail.att_name%>"
+                                      required></textarea>
+
+                                    <% }else if (data.parent_detail.att_type==3) { %>
+                                      <select class="form-control select2" name="<%= data.parent_detail.key_name%>">
+                                        <option>Select <%= data.parent_detail.att_name %>
+                                        </option>
+                                        <% if(attributesData.length !=0){ attributesData.forEach(function(attdata){
+                                          if(data.parent_detail.att_id==attdata.att_id){ %>
+                                          <option>
+                                            <%= attdata.value %>
+                                          </option>
+                                          <% } }) } %>
+                                      </select>
+
+                                      <% }else if (data.parent_detail.att_type==4) { %>
+                                        <select class="form-control select2" multiple
+                                          name="<%= data.parent_detail.key_name%>">
+                                          <option>Select <%= data.parent_detail.att_name %>
+                                          </option>
+                                          <% if(attributesData.length !=0){ attributesData.forEach(function(attdata){
+                                            if(data.parent_detail.att_id==attdata.att_id){ %>
+                                            <option>
+                                              <%= attdata.value %>
+                                            </option>
+                                            <% } }) } %>
+                                        </select>
+
+
+                                        <% }else if (data.parent_detail.att_type==5) { %>
+                                          <select class="form-control select2" name="<%= data.parent_detail.key_name%>">
+                                            <option>Select <%= data.parent_detail.att_name %>
+                                            </option>
+                                            <% if(attributesData.length !=0){ attributesData.forEach(function(attdata){
+                                              if(data.att_id==attdata.att_id){ %>
+                                              <option>
+                                                <%= attdata.value %>
+                                              </option>
+                                              <% } }) } %>
+                                          </select>
+
+                                          <% }else if (data.parent_detail.att_type==6) { %>
+                                            <input type="color" class="form-control"
+                                              name="<%= data.parent_detail.key_name%>" style="height: 3rem;"
+                                              placeholder="Enter <%= data.parent_detail.att_name%>" required>
+
+                                            <% } %>
+                            </div>
+                          </div>
+
+
+
+
                         </div>
-                      </div>
-                      
-                     
-                      
-                    
+                        <% if(data.child_detail.length !=0){ var child_data=data.child_detail;
+                          child_data.forEach(function(data){ %>
+
+                          <div class="row" style="border:solid 1px; margin-Top:5px">
+                            <div class="col-6"></div>
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label>
+                                  <%= data.att_name %>
+                                </label>
+                                <% if (data.att_type==0) {%>
+                                  <input type="number" class="form-control" name="<%= data.key_name %>"
+                                    style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required>
+                                  <% }else if (data.att_type==1) { %>
+                                    <input type="text" class="form-control" name="<%= data.key_name%>"
+                                      style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required>
+                                    <% }else if (data.att_type==2) { %>
+                                      <textarea class="form-control" name="<%= data.key_name%>" style="height: 3rem;"
+                                        placeholder="Enter <%= data.att_name%>" required></textarea>
+
+                                      <% }else if (data.att_type==3) { %>
+                                        <select class="form-control select2" name="<%= data.key_name%>">
+                                          <option>Select <%= data.att_name %>
+                                          </option>
+                                          <% if(attributesData.length !=0){ attributesData.forEach(function(attdata){
+                                            if(data.att_id==attdata.att_id){ %>
+                                            <option>
+                                              <%= attdata.value %>
+                                            </option>
+                                            <% } }) } %>
+                                        </select>
+
+                                        <% }else if (data.att_type==4) { %>
+                                          <select class="form-control select2" multiple name="<%= data.key_name%>">
+                                            <option>Select <%= data.att_name %>
+                                            </option>
+                                            <% if(attributesData.length !=0){ attributesData.forEach(function(attdata){
+                                              if(data.att_id==attdata.att_id){ %>
+                                              <option>
+                                                <%= attdata.value %>
+                                              </option>
+                                              <% } }) } %>
+                                          </select>
+
+
+                                          <% }else if (data.att_type==5) { %>
+                                            <select class="form-control select2" name="<%= data.key_name%>">
+                                              <option>Select <%= data.att_name %>
+                                              </option>
+                                              <% if(attributesData.length !=0){
+                                                attributesData.forEach(function(attdata){
+                                                if(data.att_id==attdata.att_id){ %>
+                                                <option>
+                                                  <%= attdata.value %>
+                                                </option>
+                                                <% } }) } %>
+                                            </select>
+
+                                            <% }else if (data.att_type==6) { %>
+                                              <input type="color" class="form-control" name="<%= data.key_name%>"
+                                                style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required>
+
+                                              <% } %>
+                              </div>
+                            </div>
+                          </div>
+                          <% }) } %>
+
+
+                            <% }) } %>
+
+
+                              <div class="row">
+                                <button class="btn"
+                                  style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i
+                                    class="fas fa-medkit"></i> Add Medicine&nbsp;</button>
+                              </div>
                     </div>
 
-                    <%   
-                  })
-                    } %>
 
 
-                    <div class="row">
-                      <button class="btn"
-                        style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i
-                          class="fas fa-medkit"></i> Add Medicine&nbsp;</button>
-                    </div>
-                  </div>
-
-
-
-                </form>
+                  </form>
 
 
 
@@ -276,23 +344,23 @@
 
 
 
-                <%-include('demoFooter');-%>
+                  <%-include('demoFooter');-%>
 
-                  <!-- Control Sidebar -->
-                  <aside class="control-sidebar control-sidebar-dark">
-                    <!-- Control sidebar content goes here -->
-                  </aside>
-                  <!-- /.control-sidebar -->
-    </div>
+                    <!-- Control Sidebar -->
+                    <aside class="control-sidebar control-sidebar-dark">
+                      <!-- Control sidebar content goes here -->
+                    </aside>
+                    <!-- /.control-sidebar -->
+                </div>
 
-    <script>
-      $(function () {
-        document.getElementById('switch-two').switchButton({
-          onlabel: 'Enabled',
-          offlabel: 'Disabled'
-        });
-      });
-    </script>
-    </body>
+                <script>
+                  $(function () {
+                    document.getElementById('switch-two').switchButton({
+                      onlabel: 'Enabled',
+                      offlabel: 'Disabled'
+                    });
+                  });
+                </script>
+                </body>
 
-    </html>
+                </html>
