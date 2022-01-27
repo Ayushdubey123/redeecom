@@ -41,6 +41,7 @@ const con=mysql.createConnection({
   });
   
   con.connect((err)=>{
+<<<<<<< HEAD
     if(err) throw err;
     console.log("");
   });
@@ -49,11 +50,19 @@ const con=mysql.createConnection({
   
   router.get('/adminDashboard', function(req, res, next) {
     if (req.session.loggedin) {
+=======
+    if(err)throw err;
+    console.log("");
+  });
+
+  router.get('/adminDashboard', function(req, res, next) {
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
      res.render('adminDashboard', {Sidebar: data});
    });
+<<<<<<< HEAD
   } else {
     req.flash('success', 'Please login first!');
     res.redirect('/');
@@ -62,24 +71,40 @@ const con=mysql.createConnection({
 
   router.get('/Category' , function(req, res, next) {
     if (req.session.loggedin) {
+=======
+   
+  }); 
+
+  router.get('/Category' , function(req, res, next) {
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
      res.render('Category_AddCategory',{message : req.flash('message'),Sidebar:data});
    });
+<<<<<<< HEAD
   } else {
     req.flash('success', 'Please login first!');
     res.redirect('/');
   }
+=======
+   
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
   });
 
 router.post('/save', upload.single('image'),(req,res)=>{
     //  sessions = req.session;
+<<<<<<< HEAD
     if (req.session.loggedin) {
 
     console.log(JSON.stringify(req.file))
     const name= req.body.name;
     const image="uploads/"+req.file.filename;
+=======
+    console.log(JSON.stringify(req.file))
+    const name= req.body.name;
+    const image=req.file.path;
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     
     const user_status=req.body.user_status;
     const admin_status=req.body.admin_status;
@@ -106,6 +131,7 @@ router.post('/save', upload.single('image'),(req,res)=>{
     })
     // res.end();
   
+<<<<<<< HEAD
   } else {
     req.flash('success', 'Please login first!');
     res.redirect('/');
@@ -114,6 +140,12 @@ router.post('/save', upload.single('image'),(req,res)=>{
 
   router.get('/CategoryList', function(req, res, next) {
     if (req.session.loggedin) {
+=======
+  
+  });
+
+  router.get('/CategoryList', function(req, res, next) {
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
@@ -125,17 +157,23 @@ router.post('/save', upload.single('image'),(req,res)=>{
 
    });
   });
+<<<<<<< HEAD
 } else {
   req.flash('success', 'Please login first!');
   res.redirect('/');
 }
+=======
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
   });
 
   
   
   
   router.get('/CategoryEdit', function(req, res, next) {
+<<<<<<< HEAD
     if (req.session.loggedin) {
+=======
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     var sql='SELECT * FROM attribute where att_position=0';
     con.query(sql, function (err, data, fields) {
      if (err) throw err;
@@ -145,6 +183,7 @@ router.post('/save', upload.single('image'),(req,res)=>{
     res.render('Category_EditCategory', { ListData: data1,Sidebar:data});
   });
 });
+<<<<<<< HEAD
 } else {
   req.flash('success', 'Please login first!');
   res.redirect('/');
@@ -155,6 +194,24 @@ router.post('/save', upload.single('image'),(req,res)=>{
   
   router.get('/catstatus', function(req, res, next) {
     if (req.session.loggedin) {
+=======
+  });
+  
+  router.get('/CategoryDelete', function(req, res, next) {
+    var sql='DELETE FROM category_master where cat_id='+req.query.id;
+   con.query(sql, function (err, data, fields) {
+    if (err) throw err;
+   
+   
+   
+    req.flash('message','Data Delete Successfully');
+    return  res.redirect("CategoryList");
+  });
+  
+  });
+  
+  router.get('/catstatus', function(req, res, next) {
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     var sql='UPDATE  category_master set cat_status='+ req.query.val +' where cat_id='+req.query.id;
     
    con.query(sql, function (err, data, fields) {
@@ -162,16 +219,23 @@ router.post('/save', upload.single('image'),(req,res)=>{
     req.flash('message','Data Updated Successfully');
     return  res.redirect("CategoryList");
   });
+<<<<<<< HEAD
 } else {
   req.flash('success', 'Please login first!');
   res.redirect('/');
 }
+=======
+  
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
   });
   
   
   router.post('/CategoryUpdate', upload.single('image'),(req,res)=>{
     //  sessions = req.session;
+<<<<<<< HEAD
     if (req.session.loggedin) {
+=======
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     console.log(JSON.stringify(req.file))
     const name= req.body.name;
     const user_status=req.body.user_status;
@@ -179,8 +243,13 @@ router.post('/save', upload.single('image'),(req,res)=>{
    
   
   if(req.file!=null){
+<<<<<<< HEAD
     // const image=req.file.path;
     const image="uploads/"+req.file.filename;
+=======
+    const image=req.file.path;
+  
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
   
     const insertQuery = "Update  category_master set cat_name=?,cat_image=?,user_status=?,admin_status=?  WHERE cat_id = ? ";
     const values =[name,image,user_status,admin_status,req.query.id]
@@ -221,6 +290,7 @@ router.post('/save', upload.single('image'),(req,res)=>{
    
    
     // res.end();
+<<<<<<< HEAD
   } else {
     req.flash('success', 'Please login first!');
     res.redirect('/');
@@ -242,4 +312,10 @@ router.post('/save', upload.single('image'),(req,res)=>{
 }
   });
 
+=======
+  
+  
+  });
+
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
   module.exports = router;

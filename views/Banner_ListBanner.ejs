@@ -1,5 +1,6 @@
 <%-include('demoHeader'); -%>
 
+<<<<<<< HEAD
 <!-- /.navbar -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
@@ -63,6 +64,8 @@
 
           </li>
           <% }) }%>
+=======
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
 
 
 <%-include('demoSidebar'); -%>
@@ -70,6 +73,7 @@
 
 
 <div class="content-wrapper">
+<<<<<<< HEAD
   <div class="alert">
     <% if(message.length > 0) { %>
       <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
@@ -77,6 +81,8 @@
       </div>
       <% }%>
     </div>
+=======
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     <div class="row">
         <div class="col-12">
     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
@@ -100,7 +106,11 @@
             <thead>
             <tr>
               <th>#</th> 
+<<<<<<< HEAD
              
+=======
+              <th>Banner Name </th>
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
               <th>Banner Image</th>
               <th>Status</th>
               <th>Action</th>
@@ -109,6 +119,7 @@
             </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD
               <%
               if(ListData.length!=0){
               var i=1;
@@ -127,14 +138,55 @@
                 <a href="/Banner_EditBanner?id=<%=data1.id; %>"><i class="fas fa-edit" style=" color:rgb(37, 112, 250); font-size: 1.5rem;"></i></a>&nbsp;
                 <a href="/bannerDelete?id=<%=data1.id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
                 
+=======
+         
+         
+            <tr>
+              <td>1</td>
+              <td>Medicine</td>
+              <td>Img</td>
+              <td>       <button  class="btn " style="width: 8rem; background-color: rgb(107, 231, 118); border-radius: 5rem;"> Save</button></td>
+              <td>
+                  
+                <button mat-button  onclick="location.href='Banner_EditBanner'"  style="background-color: rgba(22, 62, 236, 0.897); height: 2rem; border-radius: 5px; color: white;">Edit</button>&nbsp;
+                <button mat-button style="background-color: rgb(233, 95, 95);  height: 2rem;border-radius: 5px;color: white; ">Delete</button>   
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
               </td>
               
           
             </tr>
          
+<<<<<<< HEAD
             
          
             <% }) }%>
+=======
+            <tr>
+              <td>2 </td>
+              <td>Medicine</td>
+              <td>Img</td>
+              <td>       <button  class="btn " style="width: 8rem; background-color: rgb(107, 231, 118); border-radius: 5rem;"> Save</button></td>
+              <td>
+                  
+                <button mat-button   onclick="location.href='Banner_EditBanner'"  style="background-color: rgba(22, 62, 236, 0.897); height: 2rem; border-radius: 5px; color: white;">Edit</button>&nbsp;
+                <button mat-button style="background-color: rgb(233, 95, 95);  height: 2rem;border-radius: 5px; color: white;">Delete</button>  
+              </td>
+          
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Medicine</td>
+              <td>Img</td>
+              <td>       <button  class="btn " style="width: 8rem; background-color: rgb(107, 231, 118); border-radius: 5rem;"> Save</button></td>
+              <td>
+                  
+                <button mat-button   onclick="location.href='Banner_EditBanner'"  style="background-color: rgba(22, 62, 236, 0.897); height: 2rem; border-radius: 5px; color: white;">Edit</button>&nbsp;
+                <button mat-button style="background-color: rgb(233, 95, 95);  height: 2rem;border-radius: 5px;color: white; ">Delete</button>   
+              </td>
+          
+            </tr>
+           
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
           
             </tbody>
             <tfoot>

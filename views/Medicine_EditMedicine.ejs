@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css"
   rel="stylesheet">
 <script
@@ -370,3 +371,205 @@
                 </body>
 
                 </html>
+=======
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+<style>
+    .switch.ios, .switch-on.ios, .switch-off.ios { border-radius: 20rem; }
+    .switch.ios .switch-handle { border-radius: 20rem; }
+  </style>
+    
+    
+      <!-- Navbar -->
+      <%-include('demoHeader');-%>
+      <!-- /.navbar -->
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="" class="brand-link">
+          <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+          <span class="brand-text font-weight-light" >REDEECOM</span>
+        </a>
+      
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          
+      
+          <!-- SidebarSearch Form -->
+          <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+              <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-sidebar">
+                  <i class="fas fa-search fa-fw"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+                   <li class="nav-item menu-open">
+              
+                    <ul class="nav nav-treeview">
+                      
+                    </ul>
+                  </li>
+                 
+                 
+                  <li class="nav-item">
+                    <a href="adminDashboard" class="nav-link">
+                      <i class="fas fa-building">&nbsp;</i>
+                      <i class="right fas fa-angle-right"></i>
+                      <p>
+                     Dashboard
+                      
+                      </p>
+                    </a>
+                   
+                  </li>
+                  <%
+                  if(Sidebar.length!=0){
+                  var i=1;
+                  Sidebar.forEach(function(data){
+                  %>
+                  <li class="nav-item">
+                    <a href="/AttributesData?id=<%= data.att_id; %>" class="nav-link">
+                      <i class="fas fa-building"> &nbsp;</i>
+                      <i class="right fas fa-angle-right"></i>
+                      <p>
+                        <%= data.att_name; %>
+                      
+                      </p>
+                    </a>
+                   
+                  </li>
+                  <% })}%>
+                 
+      <!-- Main Sidebar Container -->
+      <%-include('demoSidebar');-%>
+    
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+    
+                   <form action="/MedicineUpdate?id=<%= ListData[0].id %>" method="post" enctype="multipart/form-data">
+                    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; margin-top: 3rem;">
+                        <div class="div" style="margin-left: 10px; padding: 2%;">
+                        Edit Medicine&nbsp;<i class="fas fa-pills"></i>
+                        </div>
+                    </div>
+                  <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+                        <div class="row">
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                <label>Featured Images:</label>
+                                <input type="file" class="form-control" name="image"  style="height: 3rem;"  placeholder="Enter Delivery Boy Name">
+                                <img  src="<%= ListData[0].image %>" style="height: 50px; width: 50px;">                     
+                              </div>
+                            </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <label>Medicine Name:</label>
+                                  <input type="text" class="form-control" value="<%= ListData[0].name %>" name="name" style="height: 3rem;" placeholder="Entre Medicine Title" required>
+                                                                 
+                                </div>
+                            
+                                
+                              </div>
+                       
+                      
+                    
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="form-group">
+      
+                                <label>Medicine InStock:</label>
+                                <div>
+                                <input type="checkbox" value="<%= ListData[0].instock %>" data-toggle="switchbutton" name="instock" checked data-style="ios">
+                              </div>
+      
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label>Medicine Status:</label>
+                                <div>
+                                  <input type="checkbox" data-toggle="switchbutton" value="<%= ListData[0].status%>"  name="status" checked data-style="ios">
+                              </div>
+      
+                              </div>
+                            </div>
+                        
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label>Medicine Price:</label>
+                                <input type="text" class="form-control" value="<%= ListData[0].price%>" name="price" style="height: 3rem;" placeholder="Enter Medicine Price" required>
+      
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group">
+      
+                                <label>Medicine Category:</label>
+                                <div>
+                                 <!-- <input type="checkbox" data-toggle="switchbutton" checked data-style="ios"> -->
+                                <select  class="form-control" value="<%= ListData[0].category%>" name="category" style="height: 3rem;" placeholder="Enter Medicine Category" required>
+                                 
+                      <%
+                      if(catdata.length!=0){
+                      var i=1;
+                      catdata.forEach(function(data){
+                      %>
+                                  <option value="<%=data.cat_id; %>"><%=data.cat_name; %></option>
+                                  <% }) }%>
+                                    </select>
+                              </div>
+      
+                              </div>
+                            </div>
+                            
+                          </div>
+                            <div class="row">
+                          <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i class="fas fa-medkit"></i> Update Medicine&nbsp;</button>
+                                </div>
+                      </div> 
+                
+                        
+                    </form>
+                      
+                    
+                </div>
+                
+            
+     
+       
+      
+    
+      
+    <%-include('demoFooter');-%>
+    
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    
+    <script>
+        $(function(){
+          document.getElementById('switch-two').switchButton({
+            onlabel: 'Enabled',
+            offlabel: 'Disabled'
+          });
+        });
+      </script>
+    </body>
+    </html>
+    
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31

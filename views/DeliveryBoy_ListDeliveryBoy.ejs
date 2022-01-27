@@ -102,12 +102,17 @@
               <th>Action</th> 
             </tr>
             </thead>
+<<<<<<< HEAD
            <tbody>
+=======
+            <tbody>
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
          
          
                 <%
                 if(ListData.length!=0){
                 var i=1;
+<<<<<<< HEAD
                 ListData.forEach(function(data1){
                 %>
             <tr>
@@ -125,12 +130,32 @@
               <a href="/editdelivery?id=<%=data1.id; %>"><i class="fas fa-edit" style=" color:rgb(37, 112, 250); font-size: 1.5rem;"></i></a>&nbsp;
               <a href="/DeleteDelivery?id=<%=data1.id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
               
+=======
+                ListData.forEach(function(data){
+                %>
+            <tr>
+                <td><%=i++; %></td>
+              <td><%=data.delivery_name; %></td>
+              <td><%=data.mobile_no; %></td>
+            <td><%=data.delivery_email;%></td>
+            <td><%=data.delivery_password;%></td>
+            <td><%=data1.delivery_status;%></td>
+            <td><%=data.delivery_commission;%></td>
+            <td><%=data.deliveryboy_address;%></td>
+        
+            <td>
+                <button class="btn" style="background-color: rgb(221, 37, 37); color: white;"> Make Deactive</button>
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
             </td>
         </tr>
         <% });}%>
            
           
+<<<<<<< HEAD
             </tbody> 
+=======
+            </tbody>
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
             <tfoot>
            
             </tfoot>
@@ -138,7 +163,11 @@
           
       </div> 
 
+<<<<<<< HEAD
   
+=======
+    <!--  -->
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     
 
   

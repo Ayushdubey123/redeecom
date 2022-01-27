@@ -67,6 +67,7 @@
       <!-- Navbar -->
       <%-include('demoHeader');-%>
       <!-- /.navbar -->
+<<<<<<< HEAD
         <!-- /.navbar -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -131,13 +132,20 @@
                 </li>
                 <% }) }%>
       
+=======
+    
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
       <!-- Main Sidebar Container -->
       <%-include('demoSidebar');-%>
     
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
     
+<<<<<<< HEAD
         <form action="/bannerUpdate?id=<%= ListData[0].id %>" method="post"  enctype="multipart/form-data">               
+=======
+                   
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;margin-top: 3rem;">
                         <div class="div" style="margin-left: 10px;  padding: 2%;">
                        Edit Banner
@@ -149,8 +157,12 @@
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label>Banner Image:</label>
+<<<<<<< HEAD
                                 <input type="file" value="<%= ListData[0].banner_image %>" name="banner_image" class="form-control" >
                                 <img  src="<%= ListData[0].banner_image %>" style="height: 50px; width: 50px;">
+=======
+                                <input type="file" class="form-control" >
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                
                               </div>
                           
@@ -159,6 +171,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label>Select Category:</label>
+<<<<<<< HEAD
                                 
                                   <select  class="form-control" name="cat_name" style="height: 3rem;"  required>
                                     
@@ -172,16 +185,34 @@
                                     </option>
                                     <% }) } %>
                                 </select>
+=======
+                                  <input type="text" class="form-control" name="firstname" >
                                
                                 </div>
                                
                               </div>
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Status:</label>
+                                  <input type="text" class="form-control" name="firstname" >
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
+                               
+                                </div>
+                               
+                              </div>
+<<<<<<< HEAD
                               
+=======
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label>Admin View:</label>
                                   <label class="switch">
+<<<<<<< HEAD
                                     <input name="admin_status" value="0" type="checkbox" <%= ListData[0].admin_status ==0 ?'checked' :'' %> >
+=======
+                                    <input type="checkbox">
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                     <span class="slider round"></span>
                                   </label>
                                 </div>
@@ -194,7 +225,11 @@
                                 <div class="form-group">
                                   <label>User View:</label>
                                   <label class="switch">
+<<<<<<< HEAD
                                     <input name="user_status" type="checkbox" value="0"  <%= ListData[0].user_status ==0 ?'checked' :'' %>>
+=======
+                                    <input type="checkbox">
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                     <span class="slider round"></span>
                                   </label>
                                 </div>
@@ -212,7 +247,11 @@
                 
                         
                   
+<<<<<<< HEAD
                       </form>
+=======
+                      
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                     
                 </div>
                 

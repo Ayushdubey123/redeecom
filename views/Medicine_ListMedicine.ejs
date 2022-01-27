@@ -111,6 +111,7 @@
               <%
               if(ListData.length!=0){
               var i=1;
+<<<<<<< HEAD
               
               ListData.forEach(function(data5){
 
@@ -127,13 +128,31 @@
               <td>
                     <%= category.cat_name; %>
                 </td>
+=======
+              ListData.forEach(function(data){
+              %>
+            <tr>
+              <td><%=i++; %></td>
+              <td><img src="<%=data.image; %>" height="80" width="100"></td>
+              <td><%=data.name; %></td>
+             
+              <td><%=data.instock==1 ?'Out Of Stock':'in Stock'; %></td>
+              <td><%=data.status==1 ?'Deactive':'Active '; %></td>
+              <td><%=data.price; %></td>
+              <td><%=data.category; %></td>
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
               
               
              
               <td>
                 <div class="buttom" style="display: flex;">
+<<<<<<< HEAD
                     <a href="/Medicine_EditMedicine?id=<%=data5.id; %>" class="btn"  style="background-color:rgb(57, 168, 57) ; color: white;">Edit</a>&nbsp;&nbsp;
                     <a href="/MedicineDelete?id=<%=data5.id; %>&file=<%=data5.image; %>" class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Delete</a>
+=======
+                    <a href="/Medicine_EditMedicine?id=<%=data.id; %>" class="btn"  style="background-color:rgb(57, 168, 57) ; color: white;">Edit</a>&nbsp;&nbsp;
+                    <a href="/MedicineDelete?id=<%=data.id; %>" class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Delete</a>
+>>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                       </div>
                 </td>
             </tr>
