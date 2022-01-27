@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 
-=======
 let cors = require('cors');
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
+
 var createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -16,7 +14,7 @@ const multer  = require('multer')
 
 const indexRouter = require('./routes/index');
 const categoryRouter = require('./routes/category');
-<<<<<<< HEAD
+
 const registerRouter = require('./routes/register');
 const medicineRouter = require('./routes/medicine');
 const attributeRouter = require('./routes/attribute');
@@ -24,26 +22,21 @@ const deliveryeRouter = require('./routes/delivery');
 const bannerRouter = require('./routes/banner');
 const usersRouter = require('./routes/usersRegistration');
 const apiRouter = require('./routes/api');
-=======
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
+
 
 
 require('dotenv').config();
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-<<<<<<< HEAD
-
-
-=======
 app.use(express.json());
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
+
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended:false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/', categoryRouter);
-<<<<<<< HEAD
+
 app.use('/', registerRouter);
 app.use('/', medicineRouter);
 app.use('/', attributeRouter);
@@ -51,16 +44,14 @@ app.use('/', deliveryeRouter);
 app.use('/', bannerRouter);
 app.use('/', usersRouter);
 app.use('/', apiRouter);
-=======
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
 
 
 
 
 
 
-<<<<<<< HEAD
-=======
+
+
 // app.post("/login",async(req,res)=>{
 //   try{
 //       const email="ayush123@gmail.com";
@@ -181,7 +172,7 @@ app.use('/', apiRouter);
 // });
 
 
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
+
 
 
 

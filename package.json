@@ -3,16 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
-    "start": "node start"
+    "start": "node ./bin/www"
   },
+
   "dependencies": {
     "bcrypt": "^5.0.1",
-=======
-    "start": "node index.js"
-  },
-  "dependencies": {
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     "body-parser": "^1.19.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
@@ -23,10 +18,9 @@
     "ejs": "^3.1.6",
     "express": "~4.16.1",
     "express-session": "^1.17.2",
-<<<<<<< HEAD
+
     "fs": "^0.0.1-security",
-=======
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
+
     "git": "^0.1.5",
     "heroku": "^7.59.2",
     "http-errors": "~1.6.3",
@@ -37,10 +31,10 @@
     "multer": "^1.4.4",
     "mysql": "^2.18.1",
     "mysql-async-simple": "^1.0.3",
-<<<<<<< HEAD
+
     "properties-reader": "^2.2.0",
-=======
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
+
+
     "uuid": "^8.3.2"
   }
 }

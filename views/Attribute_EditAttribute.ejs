@@ -1,19 +1,14 @@
-<<<<<<< HEAD
 <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
 <style>
     .switch.ios, .switch-on.ios, .switch-off.ios { border-radius: 20rem; }
     .switch.ios .switch-handle { border-radius: 20rem; }
   </style>
-=======
-
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
     
     
       <!-- Navbar -->
       <%-include('demoHeader');-%>
       <!-- /.navbar -->
-<<<<<<< HEAD
                
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -83,81 +78,11 @@
               <% }) }%>
              
  
-=======
-      <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a href="" class="brand-link">
-          <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
-          <span class="brand-text font-weight-light" >REDEECOM</span>
-        </a>
-      
-        <!-- Sidebar -->
-        <div class="sidebar">
-          <!-- Sidebar user panel (optional) -->
-          
-      
-          <!-- SidebarSearch Form -->
-          <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-              <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                  <i class="fas fa-search fa-fw"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-      
-          <!-- Sidebar Menu -->
-          <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-              <!-- Add icons to the links using the .nav-icon class
-                   with font-awesome or any other icon font library -->
-                   <li class="nav-item menu-open">
-              
-                    <ul class="nav nav-treeview">
-                      
-                    </ul>
-                  </li>
-                 
-                 
-                  <li class="nav-item">
-                    <a href="adminDashboard" class="nav-link">
-                      <i class="fas fa-building">&nbsp;</i>
-                      <i class="right fas fa-angle-right"></i>
-                      <p>
-                     Dashboard
-                      
-                      </p>
-                    </a>
-                   
-                  </li>
-                  <%
-                  if(Sidebar.length!=0){
-                  var i=1;
-                  Sidebar.forEach(function(data){
-                  %>
-                  <li class="nav-item">
-                    <a href="/AttributesData?id=<%= data.att_id; %>" class="nav-link">
-                      <i class="fas fa-building"> &nbsp;</i>
-                      <i class="right fas fa-angle-right"></i>
-                      <p>
-                        <%= data.att_name; %>
-                      
-                      </p>
-                    </a>
-                   
-                  </li>
-                  <% })}%>
-                 
-      
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
       <!-- Main Sidebar Container -->
       <%-include('demoSidebar');-%>
     
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-<<<<<<< HEAD
         <br>
           
     
@@ -185,21 +110,6 @@
                               <div class="form-group">
                                 <label>Field Name:</label>
                                 <input type="text" class="form-control" name="att_name" value="<%= ListData[0].att_name %>"  style="height: 3rem;"  placeholder="Enter Field Name" required>
-=======
-    
-                   
-                    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; margin-top: 3rem;">
-                        <div class="div" style="margin-left: 10px; padding: 2%;">
-                        Edit Attributes &nbsp;<i class="fas fa-paperclip"></i>
-                        </div>
-                    </div>
-                  <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
-                        <div class="row">
-                            <div class="col-sm-4">
-                              <div class="form-group">
-                                <label>Field Name:</label>
-                                <input type="text" class="form-control" name=""  style="height: 3rem;"  placeholder="Enter Field Name" required>
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                                                
                               </div>
                           
@@ -209,7 +119,6 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Field Type:</label>
-<<<<<<< HEAD
                                   <select class="form-control" name="att_type"   style="height: 3rem;"   required>
                                     <option >Select Type</option>
                                  <% var i=0; field.forEach(function(data){%>
@@ -221,27 +130,14 @@
                                 </select>                             
                                 </div>
   
-=======
-                                  <select class="form-control" name=""  style="height: 3rem;"   required>
-                                    <option >Select Type</option>
-                                </select>                             
-                                </div>
-                            
-                                
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                               </div>
                               <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Position Type:</label>
-<<<<<<< HEAD
                                   <select class="form-control" name="att_position"  style="height: 3rem;"   required>
                                     <option >Select Position Type</option>
                                     <option value="0"  <%= 0==ListData[0].att_position ?'selected':'' %> >Global</option>
                                     <option value="1" <%= 1==ListData[0].att_position ?'selected':'' %>>Local</option>
-=======
-                                  <select class="form-control" name=""  style="height: 3rem;"   required>
-                                    <option >Select Position Type</option>
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                 </select>                             
                                 </div>
                             
@@ -260,15 +156,10 @@
                               <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Number:</label>
-<<<<<<< HEAD
                                   <select  class="form-control" name="att_number"  style="height: 3rem;"  required>
                                         <option>Select Number</option>
                                         <option value="0" <%= 0==ListData[0].att_number ?'selected':'' %>>Single</option>
                                         <option value="1" <%= 0==ListData[0].att_number ?'selected':'' %>>Multiple</option>
-=======
-                                  <select  class="form-control" name=""  style="height: 3rem;"  required>
-                                        <option>Select Number</option>
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                         
                                     </select>
                                 </div>
@@ -279,7 +170,6 @@
                                 <div class="form-group">
                                   <label>IsParent:</label>
                                   <select  class="form-control" name="isparent"  style="height: 3rem;"  required>
-<<<<<<< HEAD
                                      
                                         <option value="0">No</option>
                                         <%
@@ -290,12 +180,6 @@
                                         <option <%= data.att_id==ListData[0].isparent ?'selected':'' %>  value="<%= data.att_id; %>">   <%= data.att_name; %>
                                         </option>
                                         <% }) } %>
-=======
-                                        <option>Select Parent</option>
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
-                                        
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                     </select>
                                 </div>
                             
@@ -307,21 +191,13 @@
                           </div>
 
                             <div class="row">
-<<<<<<< HEAD
                           <button  class="btn" style="margin-top: 10px; background: linear-gradient(#e66465, #9198e5); color: rgb(0, 0, 0); margin-left: 5px;"><i class="fas fa-plus"></i> Add Medicine Attribute &nbsp;</button>
-=======
-                          <button  class="btn" style="margin-top: 10px; background-color: rgb(94, 6, 94); color: white; margin-left: 5px;"><i class="fas fa-plus"></i> Update Medicine Attribute &nbsp;</button>
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                                 </div>
                       </div> 
                 
                         
                   
-<<<<<<< HEAD
                     </form>
-=======
-                      
->>>>>>> b2018b207f7b3a8f061ba179d0dbde820d16cf31
                     
                 </div>
                 
