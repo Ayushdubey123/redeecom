@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "redeecom",
+  "private_key_id": "0aa7f1e2a602c452c6c1191ef980b41253597dd4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDNJku/dQoopdWf\nb7vGjA+z4YRW50MLiMAOX4I2eCAtiJ3Iu+z9JhyPKIlQGAP7FB372Bn7NiAV4Yvc\nCBtd57fC/GVzfWa8xRWH6m4bqBB+/BslPWA3WLKkAAxknmsQM3h3lF79+VG9AKyA\ntMls5xx0ezJ7yKtUHFxWGO4iEiqzjV2ddgko+cXLOcSdc0K+Uw8aNpTY7Nc4QsUw\ny+N/9etpKPae9/w9PLd9LKha7QShLAurTULU0vtYR1TL2jAqWVWHw6TwGJAdlqeo\nmvCXEHZg+aL5VQ+zo8pcI81GKNGw6Y6wBPpHJBh/UXITQ48DiD+sx8p9Wg10jCBi\nJwap9eCrAgMBAAECggEABVWYXffFBGjlRpF8ppY8pWbgIGZcl9Mvs0VPY5YVm6tF\n2poJP9twLDoe1ULhtrpqL2Zfc+jkuAXTQbsXWGoVuX3m2lC0VKFcoS9XOytQXEXT\neRhPIZ28tMAaPQ+MlyMk0cSEcntJtrT5ADZsHfVespoDtJgP+cBBtCzAqqV3ZTo5\niNKrYtpW89UjP43d49aopZWP9Jmb/jOqg3lTqEzuNAgIIB4FYfoktHmKeN1+Dnek\nCJeOKDrB/lnIvFifoLZS6JU/dn2iq4FbWUAk/w2lC203sJihgcIhZcvQKwo8uXHi\nY9SEOGn1rO11bEcsQKMehg+6IBY30roQ3guJtDxuYQKBgQDwUeIgNYe5HABAaTaK\nQWDwDV9BCBz4hmoOuvKl7ViRCOvnjP8oIZAf9Vvh5MBkSQXTyOI/bS7m8PC4QvAZ\nC5TqMffR7lnLXRUzCllMee8lBjFhGPGo26t7VdfAMaX7mzpfMXze+XIyGMyW2YYz\nu7R86LUd5OD4cmnmTpQI+80f8QKBgQDaiPSsalCLlP0QU6Z6o8FCN2Pfok7BGGr9\nurnGEPt8LqmQgiJ3RPUDxDxcaJe3EVay95hAgw+5XiQoAeiKuexrXaax8k6tNlhE\nCaSrQvDMD50bzCSos1YPG0e7uvdYmDA8o95HMkKab9zitacLJ9+jRmWro4V20CRk\nFuKQe+nmWwKBgQCzbT96stzhzVE2xhdNhGC++gzrfgY7XAgldVkjn6DnsJSJblE3\ngk+cPNHcR7GJbqfmJu8dUgSZsrzXpkqjOG13qdUQrXfniVkBobFokwWFTClkCH6t\nh01yKXaLbcYypAQh/M3xoKatVqyx2DkFuRiZxhkr964scSg2JucKCg5t0QKBgQCS\nPFl2UsJJVU6usTtTD+eP9t7XVJZcsolN9ri/6LdQ1yzSrbKAm11VwugdckQr1edt\nZS+1474O7gdF2lkRE+83vXiB1UJ+uEICbW2KyQW3l68rXcUeOruY6klrP2arG1QU\nEBf7Do/xJm/qKWJ5nZoSeVYpsAfshMYFUCcWRkUzxwKBgF09/YDtW0bTwqzMKCaH\nyl7ZD42uTp0VwPs498fOw9Voc9TTDIbYSibSMIct0hKAfZb5rkYZaCUyqvo/pxET\nS/modAclN7nkqBjbxLn5KuUC6h1JLRp9fnd066PTkt+Ef/j8xfWBG7P/3k/cnftj\nXd0fBiK9nGffWa7ic1Q7/0FX\n-----END PRIVATE KEY-----\n",
+  "client_email": "redeecomservice@redeecom.iam.gserviceaccount.com",
+  "client_id": "103477480726070485100",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/redeecomservice%40redeecom.iam.gserviceaccount.com"
+}

@@ -63,10 +63,18 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+#preloader{
+  background-color: #000 url('F:/Sonambika/Redeecom/images/loader.gif') no-repeat center center;
+  background-size:15% ;
+  height:100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
 
     </style>
 
-
+<!-- <div id="preloader"></div> -->
   <!-- Navbar -->
   <%-include('demoHeader');-%>
   <!-- /.navbar -->
@@ -76,11 +84,8 @@ input:checked + .slider:before {
              
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="
-    
-    
-    " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <a href="" class="brand-link">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light" >REDEECOM</span>
     </a>
 
@@ -124,34 +129,19 @@ input:checked + .slider:before {
                 </a>
                
               </li>
-              <%
-              if(Sidebar.length!=0){
-              var i=1;
-              Sidebar.forEach(function(data){
-              %>
-              <li class="nav-item">
-                <a href="adminDashboard" class="nav-link">
-                  <i class="nav-icon fab fa-firefox "></i>
-                  <p>
-                    <%= data.att_name; %>
-                  
-                  </p>
-                </a>
-               
-              </li>
-              <% }) }%>
+              
              
   
   <!-- Main Sidebar Container -->
   <%-include('demoSidebar');-%>
 
-  
+
    
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="padding: 1%;">
 
                <form action="/save" method="post"  enctype="multipart/form-data">
-                <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
+                <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; ">
                     <div class="div" style="margin-left: 10px;  padding: 2%;">
                     Add Category
                     </div>
@@ -165,7 +155,7 @@ input:checked + .slider:before {
                     <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
                       <%= message %>
                     </div>
-                    <% }%>
+                     <% }%>
                   </div>
                 <div class="row">
                         <div class="col-md-12">
@@ -184,7 +174,7 @@ input:checked + .slider:before {
                           </div>
                       
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                               <label>Admin View:</label>
@@ -210,7 +200,7 @@ input:checked + .slider:before {
                          
                           
                           </div>
-                          </div>
+                          </div> -->
                             
                          
                             
@@ -233,8 +223,7 @@ input:checked + .slider:before {
             
         
  
-   
-  
+ 
 
   
 <%-include('demoFooter');-%>
@@ -246,6 +235,12 @@ input:checked + .slider:before {
   <!-- /.control-sidebar -->
 </div>
 
-
-</body>
+  
+<!-- <script>
+  var loader = document.getElementById("preloader");
+  window.addEventListener("load",function(){
+    loader.style.display="none";
+  })
+</script>
+</body> -->
 </html>

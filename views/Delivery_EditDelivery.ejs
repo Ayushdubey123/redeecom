@@ -74,7 +74,7 @@
     
     
     " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light">REDEECOM</span>
     </a>
 
@@ -118,25 +118,14 @@
             </a>
 
           </li>
-          <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
-            <li class="nav-item">
-              <a href="adminDashboard" class="nav-link">
-                <i class="nav-icon fab fa-firefox "></i>
-                <p>
-                  <%= data.att_name; %>
-
-                </p>
-              </a>
-
-            </li>
-            <% }) }%>
-
+        
 
       <!-- Main Sidebar Container -->
       <%-include('demoSidebar');-%>
     
+      
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="padding:1%;">
 
         <div class="alert">
           <% if(message.length > 0) { %>
@@ -157,7 +146,7 @@
                             <div class="col-sm-4">
                               <div class="form-group">
                                 <label>Delivery Boy Name:</label>
-                                <input type="text" class="form-control" value="<%= ListData[0].delivery_name %>" name="delivery_name"  style="height: 3rem;"  placeholder="Enter Delivery Boy Name" required>
+                                <input type="text" class="form-control" value="<%= ListData[0].delivery_name %>" name="delivery_name"  style="height: 3rem;"   required>
                                                                
                               </div>
                           
@@ -166,7 +155,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Delivery Mobile No(Only Digit):</label>
-                                  <input type="text" class="form-control" value="<%= ListData[0].mobile_no %>"  name="mobile_no" style="height: 3rem;" placeholder="Enter Delivery Boy Mobile Number" required>
+                                  <input type="text" class="form-control" value="<%= ListData[0].mobile_no %>"  name="mobile_no" style="height: 3rem;" required>
                                                                  
                                 </div>
                             
@@ -175,7 +164,7 @@
                               <div class="col-sm-4">
                                 <div class="form-group">
                                   <label>Delivery Boy Email Address:</label> 
-                                  <input type="text" class="form-control" value="<%= ListData[0].delivery_email %>" name="delivery_email"  style="height: 3rem;" placeholder="Enter Delivery Boy Email" required>
+                                  <input type="text" class="form-control" value="<%= ListData[0].delivery_email %>" name="delivery_email"  style="height: 3rem;" required>
                                                                  
                                 </div>
                             
@@ -200,16 +189,18 @@
                                 </div>
                             
                               </div>
+    
+    
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label>Delivery Boy Commission(Admin %):</label>
-                                  <input type="text" value="<%= ListData[0].delivery_commission %>" name="delivery_commission" class="form-control" style="height: 3rem;" required>
-                           
+                                  <label>Delivery Boy Commission:</label>
+                                  <input type="text" class="form-control" value="<%= ListData[0].commission %>" name="commission"  style="height: 3rem;" required>
+                          
                                 </div>
                             
                               </div>
     
-                              <div class="col-md-12">
+                              <!-- <div class="col-md-12">
                                 <div class="form-group">
                                   <label>DeliveryBoy Address:</label>
                                   <textarea class="form-control"  name="deliveryboy_address" required>
@@ -217,7 +208,7 @@
                                 </div>
                             
                               </div>
-    
+     -->
                                <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i class="fas fa-plus-circle"></i> Update Delivery Boy&nbsp;<i class="fas fa-motorcycle"></i></button>
                     
                           </div>

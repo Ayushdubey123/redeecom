@@ -6,7 +6,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="" class="brand-link">
-    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
     <span class="brand-text font-weight-light" >REDEECOM</span>
   </a>
 
@@ -51,23 +51,7 @@
               </a>
              
             </li>
-            <%
-            if(Sidebar.length!=0){
-            var i=1;
-            Sidebar.forEach(function(data){
-            %>
-            <li class="nav-item">
-              <a href="/AttributesData?id=<%= data.att_id; %>" class="nav-link">
-                <i class="fas fa-building"> &nbsp;</i>
-                <i class="right fas fa-angle-right"></i>
-                <p>
-                  <%= data.att_name; %>
-                
-                </p>
-              </a>
-             
-            </li>
-            <% })}%>
+            
            
 
 
@@ -89,7 +73,7 @@
     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem;  margin-top: 1rem;">
         <div class="div" style="margin-left: 15px;  padding: 2%; ">
        Vendor List
-     
+       <a  class="btn"  href='/register'" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add New</a>
 
         </div>
     </div>
@@ -102,13 +86,14 @@
     </div>
 
     <!--  -->
-    <div class="card-body" >
+    <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;" >
         <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
               <th>#</th> 
               <th> Name </th>
               <th> Email</th>
+              <th> Mobile</th>
               <th>Password</th>
               <th>Action</th>
             
@@ -124,8 +109,11 @@
                 %>
              <tr>
                  <td><%=i++; %></td>
-              <td><%=data.name; %></td>
+              <td>
+                <a href="/vendordashboard?id=<%=data.id; %>">  <%=data.name; %></a>
+              </td>
               <td><%=data.email; %></td>
+              <td><%=data.mobile; %></td>
               <td><%=data.password; %></td>
               
            

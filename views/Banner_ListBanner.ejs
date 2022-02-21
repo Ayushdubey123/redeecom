@@ -7,7 +7,7 @@
   
   
   " class="brand-link">
-    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
     <span class="brand-text font-weight-light">REDEECOM</span>
   </a>
 
@@ -51,25 +51,14 @@
           </a>
 
         </li>
-        <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
-          <li class="nav-item">
-            <a href="adminDashboard" class="nav-link">
-              <i class="nav-icon fab fa-firefox "></i>
-              <p>
-                <%= data.att_name; %>
-
-              </p>
-            </a>
-
-          </li>
-          <% }) }%>
+       
 
 
 <%-include('demoSidebar'); -%>
 
 
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding: 1%;">
   <div class="alert">
     <% if(message.length > 0) { %>
       <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
@@ -79,11 +68,11 @@
     </div>
     <div class="row">
         <div class="col-12">
-    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; ">
         <div class="div" style="margin-left: 15px;  padding: 2%; ">
        Banner List
-       <button  class="btn"  onclick="location.href='Banner_AddBanner'" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add Banner</button>
-
+       <!-- <button  class="btn"  onclick="location.href='Banner_AddBanner'" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add Banner</button> -->
+       <a  class="btn"  href='/Banner_AddBanner' style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add Banner</a>
         </div>
     </div>
 
@@ -108,8 +97,7 @@
           
             </tr>
             </thead>
-            <tbody>
-              <%
+                          <%
               if(ListData.length!=0){
               var i=1;
               ListData.forEach(function(data1){
@@ -119,7 +107,7 @@
               <td><%=i++; %></td>
               <td><img src="<%=data1.banner_image; %>" height="50" width="50"></td>
               
-              <!-- <td>     <a href="/bannerstatus?id=<%=data1.id; %>&val=<%=data1.banner_status==0 ?1:0; %>" class="btn " style=" background-color: rgb(107, 231, 118); border-radius: 5rem;" >  <%= data1.banner_status == 0 ?'Publish' :'Unpublish' %></a></td> -->
+            
               <td><a href="/bannerstatus?id=<%=data1.id; %>&val=<%=data1.banner_status==0 ?1:0; %>" class="btn " style=" background-color: rgb(107, 231, 118); border-radius: 5rem;" >  <%= data1.banner_status == 0 ?'Publish' :'Unpublish' %></a></td>
               <td>
                   
@@ -137,42 +125,34 @@
             <% }) }%>
           
             </tbody>
-            <tfoot>
-           
-            </tfoot>
+   
           </table>
           
       </div> 
-
-    <!--  -->
-    
-
-  
 </div>
-<%-include('demoFooter');-%>
 
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true, "lengthChange": true, "autoWidth": false,
-            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            // "buttons": ["excel","pdf","print"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-</script>
 </body>
+
 </html>
 
+<%-include('demoFooter');-%>
 
 
-
-<!--  -->
+<script>
+  $(function () {
+      $("#example1").DataTable({
+          "responsive": true, "lengthChange": true, "autoWidth": false,
+          // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          // "buttons": ["excel","pdf","print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
+      });
+  });
+</script>

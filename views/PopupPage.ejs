@@ -1,6 +1,8 @@
+<title>Redeecom</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 body {
     background-color: #000
@@ -42,109 +44,123 @@ h5 {
     </style>
 <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding">
     <div class="card">
-        <h2>Order Preview</h2>
+      <div class="cross" >
+        <a href="/orderList" class="btn btn-danger"   style="float: right; height: 3rem; width: 4.5rem;"><i class="fa fa-xmark" style="font-size: 2rem;"></i></a>
+        </div>
+        <h2 style="margin-left:20; margin-top: 10; font-weight: 800;">Order Preview</h2>
         <div class="col-sm-12">
-        <button class="btn btn-primary" style="float: right;">Print Order</button>
+        <button class="btn btn-primary" onclick="window.print()" style="float: right;">Print Order</button>
         </div>
             <div class="card-header">
                     <div class="form-control">
-                        <label >Order Id:265</label>    <br/>
-                        <label >Customer Name:-***********</label>   <br/> 
-                        <label >Customer Mobile:-***********</label>
+                        <label >Order Id: <%= ListData[0].order_id  %></label>   <br/>
+                        <label >Customer Name:-  <%= ListData[0].first_name + ListData[0].last_name  %></label>   <br/> 
+                        <label >Customer Mobile:- <%= ListData[0].mobile  %></label>
                         <br/>
                         <br/> 
-                        <label >Order Date:-06-01-2022</label>
+                        <label >Order Date: <%= ListData[0].order_date  %></label><br>
+                        <label >Delivery Address: <%= ListData[0].address  %></label><br>
+                        <label >Vendor Name: <%= ListData[0].v_name  %></label><br>
+
                         </div>
             </div>   
-            <div class="row">    
-                <div class="col-12">
-            <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
-                <table class="table table-bordered table-striped" >
+         
+            
+            <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255);">
+              <div class="row">  
+              <table  class="table table-bordered table-striped" style="height: 3rem; width: 7rem;" >
                     <thead>
                     <tr>
                       <th>Sr No</th> 
-                      <th>Product Name </th>
-                      <th>Product Image</th>
-                      <th>Discount</th>
-                      <th>Product Price</th>
-                      <th>Product Qty</th>
-                      <th>Product Total</th>
-                    
-                  
+                      <th>Product Name</th>
+                      <th>Product Qty </th>
+                      <th> Price</th>
+                      <th>Discount </th>      
+                      <th> Note</th>
+                      <th>Commission</th>
+                      <th>Delivery boy</th>
+                      <th>Distance</th>
+                      <th>Payment Status</th>
+                      <th>Total Amount</th>  
                     </tr>
                     </thead>
                     <tbody>
-                 
-                 
-                    <tr>
-                      <td>1</td>
-                      <td>Medicine</td>
-                      <td>
-                       
-                        
-                         </td>
-                      <td>0%</td>
-                      <td>350$</td>
-                      <td>2</td>
-                      <td>700$</td>
-                  
-                    </tr>
-                 
-                    <tr>
-                      <td>2 </td>
-                      <td>Medicine</td>
-                      <td><i class="fas fa-image"></i></td>
-                      <td>0%</td>
-                      <td>350$</td>
-                      <td>2</td>
-                      <td>700$</td>
-                  
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Medicine</td>
-                      <td><i class="fas fa-image"></i></td>
-                      <td>0%</td>
-                      <td>350$</td>
-                      <td>2</td>
-                      <td>700$</td>
-                  
-                    </tr>
+                      <% var  mydata= JSON.parse( ListData[0].product);
                    
+                      %>
+                     
+                      <%
+                      if(ListData.length!=0){
+                      var i=1;
+                      mydata.forEach(function(data){
+                      %>
+                    <tr>
+                      <td><%=i++; %></td>
+                      <td><%= data.title%></td>
+                      <td><%= data.quantity%></td>
+                      <td><%= data.price%></td>
+                      
+                      <td><%= data.title%></td>
+                      <td><%= ListData[0].note %></td>
+                      <td><%= data.title%></td>
+                      <td><%= data.title%></td>
+                      <td><%= ListData[0].payment_status==0 ? 'Not Paid': 'Paid' %></td>
+                      <td><%=  ListData[0].order_status %></td>
+                      <td><%= data.quantity * data.price %></td>
+                    </tr>
+                    <% }) }%>
                   
                     </tbody>
-                    <tfoot>
-                   
-                    </tfoot>
+                    
                   </table>
+              </div>
                   
               </div> 
-            </div>
-            </div>
+         
+          
        
                 <div class="card-footer">
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                          Payment Method
-                          <span class="badge badge-primary badge-pill">Cash On Delivery</span>
+                          <span class="badge badge-primary badge-pill"><%=  ListData[0].payment_mode %></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Sub Total Price
-                          <span class="badge badge-secondary badge-pill">1025$</span>
+                          <span class="badge badge-secondary badge-pill"><%=  ListData[0].total_amount - ListData[0].delivery_charges   %></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Delivery Charge
-                          <span class="badge badge-danger badge-pill">100$</span>
+                          <span class="badge badge-danger badge-pill"><%=   ListData[0].delivery_charges   %></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Net Amount
-                          <span class="badge badge-secondary badge-pill">1125$</span>
+                          <span class="badge badge-secondary badge-pill"><%=  ListData[0].total_amount  %></span>
                         </li><li class="list-group-item d-flex justify-content-between align-items-center">
                             Order Status
-                          <span class="badge badge-success badge-pill">Pending</span>
+                          <span class="badge badge-success badge-pill"><%=  ListData[0].order_status   %></span>
                         </li>
                       </ul>
                     </div>
     </div>
    
 </div>
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+  </script> -->

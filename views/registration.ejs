@@ -6,7 +6,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="" class="brand-link">
-    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
     <span class="brand-text font-weight-light" >REDEECOM</span>
   </a>
 
@@ -51,23 +51,6 @@
               </a>
              
             </li>
-            <%
-            if(Sidebar.length!=0){
-            var i=1;
-            Sidebar.forEach(function(data){
-            %>
-            <li class="nav-item">
-              <a href="/AttributesData?id=<%= data.att_id; %>" class="nav-link">
-                <i class="fas fa-building"> &nbsp;</i>
-                <i class="right fas fa-angle-right"></i>
-                <p>
-                  <%= data.att_name; %>
-                
-                </p>
-              </a>
-             
-            </li>
-            <% })}%>
            
 
 
@@ -79,7 +62,7 @@
 
              <form action="/addvendor" method="post">
              
-            <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); align-items: center;">
+            <div class="card-body" style="background-color: rgb(255, 255, 255); align-items: center;">
               <div class="alert">
                 <% if(message.length > 0) { %>
                   <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
@@ -94,15 +77,15 @@
                     </div>
                     <% }%>
                   </div>
-              <div class="div" style="margin-left: 10px;  padding: 2%; align-items: center; font-size: 2rem;font-weight: 800;">
+              <div class="div" style="margin-left: 10px;  padding: 1%; align-items: center; font-size: 2rem;font-weight: 800;">
                
-               <h2 style="font-weight: 800    ;"> Redeecom</h2>
+               <h2 style="font-weight: 800;"> Redeecom</h2>
                
                 </div>  
               
                 <p> <%=(typeof alertMsg!='undefined')? alertMsg:''%></p>
               <div class="row">
-                      <div class="col-sm-6">
+                      <!-- <div class="col-6">
                         <div class="form-group">
                          
                           <input type="text" class="form-control" name="name"  style="height: 3rem;"  placeholder="Full Name" required>
@@ -110,8 +93,20 @@
                         </div>
                     
                         
+                      </div> -->
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                         
+                          <input type="text" class="form-control" name="name"   style="height: 3rem;"  placeholder="Full Name">
+                                                         
+                        </div>
+                    
+                        
                       </div>
-                      <div class="col-sm-6">
+                      
+                    </div>
+<!--                       
+                      <div class="col-6">
                         <div class="form-group">
                           
                           <input type="text" class="form-control" name="email"  style="height: 3rem;"  placeholder="Email" required>
@@ -119,14 +114,68 @@
                         </div>
                     
                         
+                      </div> -->
+                      
+
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control"   name="email"  style="height: 3rem;"  placeholder="Email">
+                                                           
+                          </div>
+                      
+                          
+                        </div>
+                       
+  
+  
+                          
+                
                       </div>
-
-
-                        
-              
-                    </div>
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <div class="form-group">
+                            
+                            <input type="text" class="form-control"   name="mobile" placeholder="Mobile No"  style="height: 3rem;">
+                                                           
+                          </div>
+                      
+                          
+                        </div>
+                       
+  
+  
+                          
+                
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-8">
+                          <div class="form-group">
+                          
+                            <input type="password" class="form-control"   name="password"  style="height: 3rem;"  placeholder="Password" >
+                                                           
+                          </div>
+                      
+                          
+                        </div>
+                       
+  
+  
+                          
+                
+                      </div>
                   
-                    <div class="row">
+                    <!-- <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                         
+                          <input type="text" class="form-control" name="mobile"  style="height: 3rem;"  placeholder="Mobile Name" required>
+                                                         
+                        </div>
+                    
+                        
+                      </div>
                       <div class="col-sm-6">
                         <div class="form-group">
                         
@@ -136,20 +185,11 @@
                     
                         
                       </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                        
-                          <input type="password" class="form-control" name="cpassword"  style="height: 3rem;"  placeholder="Repeat Password" required>
-                                                         
-                        </div>
-                    
-                        
-                      </div>
-
+                  
 
                         
               
-                    </div>
+                    </div> -->
                    
                     <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i class="fas fa-plus-circle"></i> Register&nbsp;</button>
                 </div> 

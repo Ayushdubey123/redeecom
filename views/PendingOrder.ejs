@@ -28,7 +28,7 @@
   
   
   " class="brand-link">
-    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
     <span class="brand-text font-weight-light" >REDEECOM</span>
   </a>
 
@@ -72,22 +72,7 @@
               </a>
              
             </li>
-            <%
-            if(Sidebar.length!=0){
-            var i=1;
-            Sidebar.forEach(function(data){
-            %>
-            <li class="nav-item">
-              <a href="adminDashboard" class="nav-link">
-                <i class="nav-icon fab fa-firefox "></i>
-                <p>
-                  <%= data.att_name; %>
-                
-                </p>
-              </a>
-             
-            </li>
-            <% }) }%>
+           
            
 
 <%-include('demoSidebar'); -%>
@@ -99,7 +84,7 @@
         <div class="col-12">
     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
         <div class="div" style="margin-left: 15px;  padding: 2%;">
-      Pending Order List
+       Order List
    
 
         </div>
@@ -117,103 +102,56 @@
         <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>#</th> 
+              <th></th>
+              <th>Sr.no</th> 
+              <th>Vendor</th> 
+              <th>User</th> 
+              <th>Date</th>
               <th>Order Id</th>
-              <th>Order Date</th>
-              <th>Delivery Boy Name</th>
-              <th>Current Status</th>
-              <th>Over Flow</th>
-              <th>Preview Data</th>
-              <th>Order Assign?</th>
-              <th>Action</th>
+             
+              <th>Amount</th>
+              <th>Status</th>        
+              <!-- <th>Action</th> -->
 
             </tr>
             </thead>
             <tbody>
-         
+              
+              <%
+              if(ListData.length!=0){
+              var i=1;
+              ListData.forEach(function(data){
+              %>
          
             <tr>
               <td>
                   <div class="ami"></div>
                 </td>
-              <td>9</td>
-              <td>09-09-2021</td>
-              <td></td>
-              <td>Pending</td>
-              <td>
-                 <button class="wait" style="background-color: rgb(115, 4, 129); border-radius: 4rem; color: white;  padding: 6px; ">Waiting  For Decision</button>
-              </td>
-                <td>
-                    <button class="btn"  onclick="location.href='PopupPage'" style="background-color: rgb(55, 12, 75); color: white;">Preview</button>
-                    </td>
-                    <td>
-                        <div class="orderassign" style="height: 1rem; width: 10rem;">
-                      <button  style="background-color: rgb(9, 140, 247); color: white; margin-top: 10px; border-radius: 5px; padding: 5px;   ">Assign Delivery Boy</button>
-                       </div>
-                        </td>
+              <td><%= i++; %></td>
+              <td><%= data.name%></td>
+              <td><%= data.userid%></td>
+              <td><%= data.order_date%></td>
+              <td><%= data.order_id%></td>
+             
+              <td><%= data.total_amount%></td>
+           
+                
+                    
                         <td>
-                            <div class="buttom" style="display: flex;">
+                            <!-- <div class="buttom" style="display: flex;">
                                 <button class="btn" style="background-color:rgb(57, 168, 57) ; color: white;">Approve</button>&nbsp;&nbsp;
                                 <button class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Reject</button>
-                                  </div>  
+                                    </div>   -->
+                                    <%= data.order_status%>
                         </td>
 
+                        <td>
+                          <a href="/order?id=<%= data.order_id %>" style=" color: rgb(106, 84, 206); height: 3rem; width: 3rem; border-radius: 5px;">View Details</a>
+                          </td>
             </tr>
+            <% }) }%>
          
-            <tr>
-                <td>
-                    <div class="ami"></div>
-                  </td>
-                <td>9</td>
-                <td>09-09-2021</td>
-                <td></td>
-                <td>Pending</td>
-                <td>
-                   <button class="wait" style="background-color: rgb(115, 4, 129); border-radius: 4rem; color: white; ">Waiting For Decision</button>
-                </td>
-                  <td>
-                      <button class="btn" style="background-color: rgb(55, 12, 75); color: white;">Preview</button>
-                      </td>
-                      <td>
-                          <div class="orderassign" style="height: 1rem; width: 10rem;">
-                        <button  style="background-color: rgb(9, 140, 247); color: white; margin-top: 10px; border-radius: 5px; padding: 5px;">Assign Delivery Boy</button>
-                         </div>
-                          </td>
-                          <td>
-                              <div class="buttom" style="display: flex;">
-                              <button class="btn" style="background-color:rgb(57, 168, 57) ; color: white;">Approve</button>&nbsp;&nbsp;
-                              <button class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Reject</button>
-                                </div>
-                            </td>
-  
-              </tr>
-              <tr>
-                <td>
-                    <div class="ami"></div>
-                  </td>
-                <td>9</td>
-                <td>09-09-2021</td>
-                <td></td>
-                <td>Pending</td>
-                <td>
-                   <button class="wait" style="background-color: rgb(115, 4, 129); border-radius: 4rem; color: white; ">Waiting for Dicision</button>
-                </td>
-                  <td>
-                      <button class="btn" style="background-color: rgb(55, 12, 75); color: white;">Preview</button>
-                      </td>
-                      <td>
-                          <div class="orderassign" style="height: 1rem; width: 10rem;">
-                        <button  style="background-color: rgb(9, 140, 247); color: white; margin-top: 10px;  border-radius: 5px; padding: 5px;">Assign Delivery Boy</button>
-                         </div>
-                          </td>
-                          <td>
-                            <div class="buttom" style="display: flex;">
-                                <button class="btn" style="background-color:rgb(57, 168, 57) ; color: white;">Approve</button>&nbsp;&nbsp;
-                                <button class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Reject</button>
-                                  </div>
-                            </td>
-  
-              </tr>
+             
            
           
             </tbody>

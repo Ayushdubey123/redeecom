@@ -7,7 +7,7 @@
     
     
     " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light">REDEECOM</span>
     </a>
 
@@ -51,28 +51,24 @@
             </a>
 
           </li>
-          <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
-            <li class="nav-item">
-              <a href="adminDashboard" class="nav-link">
-                <i class="nav-icon fab fa-firefox "></i>
-                <p>
-                  <%= data.att_name; %>
-
-                </p>
-              </a>
-
-            </li>
-            <% }) }%>
+        
 
 <%-include('demoSidebar'); -%>
 
 
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding: 1%;">
+  <div class="alert">
+    <% if(message.length > 0) { %>
+      <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
+        <%= message %>
+      </div>
+      <% }%>
+    </div>  
     <div class="row">
         <div class="col-12">
-    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top:3rem;">
-        <div class="div" style="margin-left: 15px;   padding: 2%;">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
+        <div class="div" style="margin-left: 15px;   padding: 1%;">
        Delivery Boy List
        <button  class="btn"  onclick="location.href='DeliveryBoy_AddDeliveryBoy'" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; float: right;"><i class="fas fa-plus-circle"></i> Add New Delivery Boy</button>
 
@@ -96,9 +92,8 @@
               <th>Delivery Boy Mobile</th>
               <th>Delivery Boy Email</th>
               <th>Delivery Boy Password</th>
-              <th>Delivery Boy Address</th>
               <th>Delivery Boy Status</th>
-              <th>Delivery Boy App Commission</th>
+              <th>Delivery Boy Commission</th>
               <th>Action</th> 
             </tr>
             </thead>
@@ -116,9 +111,13 @@
               <td><%=data1.mobile_no; %></td>
             <td><%=data1.delivery_email;%></td>
             <td><%=data1.delivery_password;%></td>
-            <td><%=data1.deliveryboy_address;%></td>
-            <td><%=data1.delivery_status;%></td>
-            <td><%=data1.delivery_commission;%></td>
+            <!-- <td><%=data1.delivery_status;%></td> -->
+
+            <td>   
+              <a href="/deliverystatus?id=<%=data1.id; %>&val=<%=data1.delivery_status==0 ?1:0; %>" class="btn " style=" background-color: rgb(42, 161, 31); border-radius: 5rem; color: white;" >  <%= data1.delivery_status == 0 ?'Publish' :'Unpublish' %></a>
+      
+            </td>
+            <td><%=data1.commission;%></td>
             
             <td>
                   

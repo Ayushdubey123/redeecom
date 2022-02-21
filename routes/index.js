@@ -40,22 +40,29 @@ router.use('/uploads', express.static('uploads'));
 router.use(sessions({
   secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
   saveUninitialized:true,
-  cookie: { maxAge:60000},
-  resave: false
+  
+  resave: true
 }));
 
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.static(path.join(__dirname, 'public')));
+
+// const con=mysql.createConnection({
+//   host: "localhost",
+//   user:"root",
+//   password:"",
+//   database:"redeecom",
+//   multipleStatements:true
+// });
 
 
-// const con=mysql.createPool({
-  const con = mysql.createConnection({
+const con = mysql.createConnection({
  socketPath     : '/cloudsql/redeecom:us-central1:myredeemocomdbinstrance',
-  // host:'49.36.92.51',
-  // host:'localhost',
-  user:"root",
-  password:"Ksingh@9825",
-  // password:"",
+//   // host:'49.36.92.51',
+   user:"root",
+   password:"Ksingh@9825",
   database:"redeecomdb",
-  // database:"redeecom",
 });
 
 
@@ -80,19 +87,21 @@ router.post('/', function(req, res) {
   try {
     con.query("select * from admin where username = ? and password = ?",[username,password],function(err,results,fields){
       if(err) throw err;
-          if (results.length <= 0) {
-              req.flash('error', 'Please enter correct email and Password!')
-              res.redirect('/')
-            }
-          else{
+          if (results.length > 0) {
             req.session.loggedin = true;
             req.session.name = username;
-            res.set({
-              'Cache-Control': 'no-cache, no-store, must-revalidate',
-              'Pragma' : 'no-cache',
-              'Expires' : '0',
-          })
             res.redirect('/adminDashboard');
+            }
+          else{
+          
+            req.flash('error', 'Please enter correct email and Password!')
+            res.redirect('/')
+          //   res.set({
+          //     'Cache-Control': 'no-cache, no-store, must-revalidate',
+          //     'Pragma' : 'no-cache',
+          //     'Expires' : '0',
+          // })
+            
           }
         });
   } catch (error) {
@@ -116,11 +125,38 @@ router.get('/adminDashboard', function(req, res, next) {
     var sql2='SELECT count(*) as total FROM user ';
    con.query(sql2, function (err2, data2, fields2) {
     if (err2) throw err2;
-    
    
-   res.render('adminDashboard', {Sidebar: data,data1:data1,data2:data2});
-   console.log("total User=>"+data2[0].total);
+    var sql3='SELECT count(*) as total FROM category_master ';
+    con.query(sql3, function (err3, data3, fields3) {
+     if (err3) throw err3;
+     var sql4='SELECT count(*) as total FROM medicine ';
+     con.query(sql4, function (err4, data4, fields4) {
+      if (err4) throw err4;
+      var sql5='SELECT count(*) as total FROM registration ';
+     con.query(sql5, function (err5, data5, fields5) {
+      if (err5) throw err5;
+      var sql6='SELECT count(*) as total FROM banner_master ';
+     con.query(sql6, function (err6, data6, fields6) {
+      if (err6) throw err6;
+      var sql7='SELECT count(*) as total FROM attribute ';
+      con.query(sql7, function (err7, data7, fields7) {
+       if (err7) throw err7;
+       var sql8='SELECT count(*) as total FROM delivery_master ';
+       con.query(sql8, function (err8, data8, fields8) {
+        if (err8) throw err8;
+        var sql9='SELECT count(*) as total FROM order_master ';
+        con.query(sql9, function (err9, data9, fields9) {
+         if (err9) throw err9;
+   res.render('adminDashboard', {Sidebar: data,data1:data1,data2:data2,totalcat:data3,product:data4,vendor:data5,banner:data6,attribute:data7,delivery:data8,order:data9});
+  
  });
+});
+});
+});
+});
+});
+});
+});
 });
 });
 } else {
@@ -192,30 +228,6 @@ router.get('/CancelledOrder', function(req, res, next) {
     res.redirect('/');
   }
 });
-
-
-// router.get('/countuser',function(req,res,next){
-//   if (req.session.loggedin) {
-//     var sql='SELECT * FROM attribute where att_position=0';
-//     con.query(sql, function (err, data, fields) {
-//      if (err) throw err;
-//      var sql1='SELECT * FROM user ';
-//      con.query(sql1, function (err1, data1, fields1) {
-//       if (err1) throw err1;
-//       var sql2='SELECT count(*) as total FROM user ';
-//      con.query(sql2, function (err2, data2, fields2) {
-//       if (err2) throw err2;
-
-//      console.log("total User"+data2[0].total);
-//   });
-// });
-// });
-//   } else {
-//     req.flash('success', 'Please login first!');
-//     res.redirect('/');
-//   }
-// });
-
 
 
 

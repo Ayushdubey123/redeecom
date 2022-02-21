@@ -74,7 +74,7 @@
     
     
     " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light">REDEECOM</span>
     </a>
 
@@ -118,23 +118,12 @@
             </a>
 
           </li>
-          <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
-            <li class="nav-item">
-              <a href="adminDashboard" class="nav-link">
-                <i class="nav-icon fab fa-firefox "></i>
-                <p>
-                  <%= data.att_name; %>
-
-                </p>
-              </a>
-
-            </li>
-            <% }) }%>
+          
 
       <%-include('demoSidebar');-%>
     
      
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="padding: 1%;">
 
         <div class="alert">
           <% if(message.length > 0) { %>
@@ -148,6 +137,7 @@
                     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
                         <div class="div" style="margin-left: 10px;  padding: 2%;">
                         Add Delivery Boy&nbsp;<i class="fas fa-motorcycle"></i>
+                       
                         </div>
                     </div>
                   <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
@@ -186,6 +176,7 @@
                                 <input type="password" class="form-control" name="delivery_password" style="height: 3rem;" placeholder="Enter Delivery Boy Password" required>
                                
                               </div>
+                              <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i class="fas fa-plus-circle"></i> Add Delivery Boy&nbsp;<i class="fas fa-motorcycle"></i></button>
                           
                             </div>
                             <div class="col-md-4">
@@ -198,32 +189,47 @@
                                 </div>
                             
                               </div>
+
                               <div class="col-md-4">
                                 <div class="form-group">
-                                  <label>Delivery Boy Commission(Admin %):</label>
-                                  <Select class="form-control" name="delivery_status" style="height: 3rem;" required>
-                                    <option value="0">Active</option>
-                                    <option value="1">Deactive</option>
-                           
+                                  <label>Commission:</label>
+                                  <input type="text" class="form-control" name="commission"  style="height: 3rem;" placeholder="Enter Delivery Boy Email" required>
                                 </div>
                             
                               </div>
+
+                              <!-- <div class="col-md-4"> 
+                                <div class="form-group">
+                                  <label>Delivery Boy Grade:</label>
+                                  <Select class="form-control" name="grade" style="height: 3rem;" required>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                           </Select>
+                                </div>
+                             
+                              </div> -->
     
-                              <div class="col-md-12">
+                              <!-- <div class="col-md-12">
                                 <div class="form-group">
                                   <label>DeliveryBoy Address:</label>
                                   <textarea class="form-control" name="deliveryboy_address" required>
                                     </textarea>
                                 </div>
                             
-                              </div>
-    
-                               <button  class="btn" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i class="fas fa-plus-circle"></i> Add Delivery Boy&nbsp;<i class="fas fa-motorcycle"></i></button>
+                              </div> -->
+                             
+                              
                     
                           </div>
                           
+                       
+
                       </div> 
-                
+                      
+                   
                         
                   
                     </form>

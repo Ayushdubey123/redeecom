@@ -28,7 +28,7 @@
   
   
   " class="brand-link">
-    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
     <span class="brand-text font-weight-light" >REDEECOM</span>
   </a>
 
@@ -72,22 +72,7 @@
               </a>
              
             </li>
-            <%
-            if(Sidebar.length!=0){
-            var i=1;
-            Sidebar.forEach(function(data){
-            %>
-            <li class="nav-item">
-              <a href="adminDashboard" class="nav-link">
-                <i class="nav-icon fab fa-firefox "></i>
-                <p>
-                  <%= data.att_name; %>
-                
-                </p>
-              </a>
-             
-            </li>
-            <% }) }%>
+            
            
 
 <%-include('demoSidebar'); -%>
@@ -120,7 +105,7 @@
               <th>#</th> 
               <th>Order Id</th>
               <th>Order Date</th>
-              <th>Current Status</th>
+              <th>Order Status</th>
               <th>Preview Data</th>
 
             </tr>
@@ -135,15 +120,22 @@
               <td>3</td>
               <td>09-09-2021</td>
              
-              <td>Completed</td>
+              <td>
+                <select class="form-control" name="status" style="height: 3rem;"
+                placeholder="Enter Medicine Category" required>
+                <option>Except</option>
+                <option>Decline</option>
+                
+                  </select>
+              </td>
            
-                <td>
-                    <button class="btn" style="background-color: rgb(55, 12, 75); color: white; font-weight: 500;">Preview</button>
-                    </td>
+              <td>
+              
+                </td>
                    
             </tr>
          
-            <tr>
+            <!-- <tr>
                 <td>
                     <div class="ami"></div>
                   </td>
@@ -157,7 +149,7 @@
                       </td>
                      
               </tr>
-           
+            -->
             
            
           

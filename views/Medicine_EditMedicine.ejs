@@ -26,7 +26,7 @@
     
     
     " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light">REDEECOM</span>
     </a>
 
@@ -70,25 +70,14 @@
             </a>
 
           </li>
-          <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
-            <li class="nav-item">
-              <a href="adminDashboard" class="nav-link">
-                <i class="nav-icon fab fa-firefox "></i>
-                <p>
-                  <%= data.att_name; %>
-
-                </p>
-              </a>
-
-            </li>
-            <% }) }%>
+         
 
 
               <!-- Main Sidebar Container -->
               <%-include('demoSidebar');-%>
 
                 <!-- Content Wrapper. Contains page content -->
-                <div class="content-wrapper">
+                <div class="content-wrapper" style="padding: 1%;">
                   <div class="alert">
                     <% if(message.length> 0) { %>
                       <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
@@ -96,11 +85,11 @@
                       </div>
                       <% }%>
                   </div>
-                  <form action="/MedicineUpdate" method="post" enctype="multipart/form-data">
+                  <form action="/MedicineUpdate?id=<%= newdata %>&cat_data=<%= cat_data %>" method="post" enctype="multipart/form-data">
                     <div class="card"
                       style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
                       <div class="div" style="margin-left: 10px; padding: 2%;">
-                        Add Medicine&nbsp;<i class="fas fa-pills"></i>
+                        Edit Medicine&nbsp;<i class="fas fa-pills"></i>
                       </div>
                     </div>
                     <div class="card-body"
@@ -163,9 +152,9 @@
                         <div class="col-6">
                           <div class="form-group">
 
-                            <label>Medicine Category:</label>
+                            <!-- <label>Medicine Category:</label>
                             <div>
-                              <!-- <input type="checkbox" data-toggle="switchbutton" checked data-style="ios"> -->
+                              
                               <select class="form-control" name="category"  style="height: 3rem;"
                                 placeholder="Enter Medicine Category" required>
 
@@ -175,7 +164,7 @@
                                   </option>
                                   <% }) }%>
                               </select>
-                            </div>
+                            </div> -->
 
                           </div>
                         </div>
@@ -335,7 +324,7 @@
                               <div class="row">
                                 <button class="btn"
                                   style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i
-                                    class="fas fa-medkit"></i> Add Medicine&nbsp;</button>
+                                    class="fas fa-medkit"></i> Update Medicine&nbsp;</button>
                               </div>
                     </div>
 

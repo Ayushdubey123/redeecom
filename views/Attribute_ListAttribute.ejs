@@ -6,7 +6,7 @@
     
     
     " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light" >REDEECOM</span>
     </a>
 
@@ -50,34 +50,26 @@
                 </a>
                
               </li>
-              <%
-              if(Sidebar.length!=0){
-              var i=1;
-              Sidebar.forEach(function(data){
-              %>
-              <li class="nav-item">
-                <a href="adminDashboard" class="nav-link">
-                  <i class="nav-icon fab fa-firefox "></i>
-                  <p>
-                    <%= data.att_name; %>
-                  
-                  </p>
-                </a>
-               
-              </li>
-              <% }) }%>
+              
 
 <%-include('demoSidebar'); -%>
 
 
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding: 1%;">
+  <div class="alert">
+    <% if(message.length > 0) { %>
+      <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
+        <%= message %>
+      </div>
+      <% }%>
+    </div>
     <div class="row">
         <div class="col-12">
-    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
         <div class="div" style="margin-left: 15px;   padding: 2%;">
         List Medicine Attribute
-       
+        <a  class="btn"  href='/Attribute_AddAttribute?id=<%= category %>'" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add Fields</a>
 
         </div>
     </div>
@@ -117,17 +109,17 @@
             <tr>
               <td><%=i++; %></td>
               <td><%=data1.att_name; %></td>
-              <td><%= field[data1.att_type]; %></td>
+              <td><%= field[data1.att_type];%></td>
               <td><%=data1.att_position==0?'Global':'Local'; %></td>
               <td><%=data1.att_number==0?'Single':'Multiple'; %></td>
-              <td><%=  data1.isparent==0?'Noparent':a.att_name   ; %></td>
+              <td><%=data1.isparent==0?'Noparent': a.att_name ; %></td>
               
-             
               <td>
-            
                   <a href="/EditAttribute?id=<%=data1.att_id; %>"><i class="fas fa-edit" style=" color:rgb(37, 112, 250); font-size: 1.5rem;"></i></a>&nbsp;
                   <a href="/attributeDelete?id=<%=data1.att_id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
-                  
+                  <% if(data1.att_position==0){ %>
+                  <a href="/AttributesData?id=<%=data1.att_id; %>"> <i class="fas fa-plus" style=" color:rgb(5, 5, 5); font-size: 1.5rem;"></i></a>&nbsp;                        
+           <% } %>
                 </td>
             </tr>
             <% }) }%>

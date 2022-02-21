@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node ./bin/www"
   },
-
   "dependencies": {
+    "@google-cloud/storage": "^5.18.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "connect-flash": "^0.1.1",
@@ -16,13 +16,10 @@
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
-    "express": "~4.16.1",
+    "express": "^4.16.4",
     "express-session": "^1.17.2",
-
+    "express-validator": "^6.14.0",
     "fs": "^0.0.1-security",
-
-    "git": "^0.1.5",
-    "heroku": "^7.59.2",
     "http-errors": "~1.6.3",
     "jimp": "^0.16.1",
     "joi": "^17.5.0",
@@ -31,10 +28,8 @@
     "multer": "^1.4.4",
     "mysql": "^2.18.1",
     "mysql-async-simple": "^1.0.3",
-
+    "preloader": "^4.0.3",
     "properties-reader": "^2.2.0",
-
-
     "uuid": "^8.3.2"
   }
 }

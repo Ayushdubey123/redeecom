@@ -80,7 +80,7 @@ input:checked + .slider:before {
     
     
     " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light" >REDEECOM</span>
     </a>
 
@@ -124,23 +124,7 @@ input:checked + .slider:before {
                 </a>
                
               </li>
-              <%
-              if(Sidebar.length!=0){
-              var i=1;
-              Sidebar.forEach(function(data){
-              %>
-              <li class="nav-item">
-                <!-- Dynamic Data in Sidebar -->
-                <a href="/AttributesData?id=<%= data.att_id; %>" class="nav-link">
-                  <i class="nav-icon fab fa-firefox "></i>
-                  <p>
-                    <%= data.att_name; %>
-                  <!-- Company Name -->
-                  </p>
-                </a>
-               
-              </li>
-              <% }) }%>
+              
              
   
   <!-- Main Sidebar Container -->
@@ -217,7 +201,8 @@ input:checked + .slider:before {
                               <td>
                   
                                 <a href="/AttributeEdit?id=<%=data1.id; %>&att_id=<%=data1.att_id; %>"><i class="fas fa-edit" style=" color:rgb(37, 112, 250); font-size: 1.5rem;"></i></a>&nbsp;
-                                <a href="/AttributeDelete?id=<%=data1.id; %>&att_id=<%=data1.att_id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
+                                <a href="/attribute_attributeDelete?id=<%=data1.id; %>&att_id=<%=data1.att_id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
+                                
                                 
                               </td>
                           

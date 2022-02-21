@@ -6,9 +6,11 @@ const sessions = require('express-session');
 const cookieParser = require('cookie-parser');
 const multer  = require('multer');
 var indexRouter = require('../routes/index');
+const uploadImage = require('../helpers/helpers')
 
 const router = express.Router();
-var storage = multer.diskStorage({
+ var storage = multer.memoryStorage({
+// var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads')
   },
@@ -22,30 +24,41 @@ router.use(flash());
 router.use(cookieParser());
 router.use('/uploads', express.static('uploads'));
 router.use('/', indexRouter);
-  // const mysqlconnection=require("../connection");
+    // const mysqlconnection=require("../connection");
 // router.use('/', admin);
 
 router.use(sessions({
   secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
   saveUninitialized:true,
-  cookie: { maxAge:50000 },
-  resave: false
+
+  resave: true
 }));
 
-const con=mysql.createConnection({
-    host: "localhost",
-    user:"root",
-    password:"",
-    database:"redeecom",
-    multipleStatements:true
-  
-  });
-  
-  con.connect((err)=>{
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.static(path.join(__dirname, 'public')));
 
-    if(err) throw err;
-    console.log("");
-  });
+// const con=mysql.createConnection({
+//     host: "localhost",
+//     user:"root",
+//     password:"",
+//     database:"redeecom",
+//     multipleStatements:true
+  
+//   });
+  
+ const con = mysql.createConnection({
+      socketPath: '/cloudsql/redeecom:us-central1:myredeemocomdbinstrance',
+      user:"root",
+      password:"Ksingh@9825",
+      database:"redeecomdb",
+ });
+
+  // con.connect((err)=>{
+
+  //   if(err) throw err;
+  //   console.log("");
+  // });
 
 
  
@@ -83,15 +96,17 @@ const con=mysql.createConnection({
 
   });
 
-router.post('/save', upload.single('image'),(req,res)=>{
+  router.post('/save', upload.single('image'),async(req,res)=>{
     //  sessions = req.session;
 
     if (req.session.loggedin) {
 
     console.log(JSON.stringify(req.file))
     
-    const image="uploads/"+req.file.filename;
+    const myFile = req.file
+    const imageUrl = await uploadImage(myFile)
 
+    const image="uploads/"+req.file.filename;
     console.log(JSON.stringify(req.file))
     const name= req.body.name;
     
@@ -100,7 +115,7 @@ router.post('/save', upload.single('image'),(req,res)=>{
     const user_status=req.body.user_status;
     const admin_status=req.body.admin_status;
     const insertQuery = "INSERT INTO category_master (cat_name,cat_image,user_status,admin_status) VALUES ? ";
-    const values =[[name,image,user_status,admin_status]]
+    const values =[[name,imageUrl,user_status,admin_status]]
     con.query(insertQuery,[values],(err,results,fields)=>{
       if(err){
         console.log('filed to insert',err);
@@ -109,16 +124,7 @@ router.post('/save', upload.single('image'),(req,res)=>{
       }
       console.log('Inserted new User :',results)
       req.flash('message','Data Inserted Successfully');
-     // req.session.message('success','Data is Inserted');
-      // res.locals.message = req.flash();
-      //res.end();
-     
-       return  res.redirect("Category");
-       
-      
-       //console.log("Data Inserted Succcessfuly");
-      //return res.status(200).json({success: 'Insert row success'});
-   
+       return  res.redirect("Category");    
     })
     // res.end();
   
@@ -180,6 +186,7 @@ router.post('/save', upload.single('image'),(req,res)=>{
  
   
   router.get('/CategoryDelete', function(req, res, next) {
+    if (req.session.loggedin) {
     var sql='DELETE FROM category_master where cat_id='+req.query.id;
    con.query(sql, function (err, data, fields) {
     if (err) throw err;
@@ -189,11 +196,14 @@ router.post('/save', upload.single('image'),(req,res)=>{
     req.flash('message','Data Delete Successfully');
     return  res.redirect("CategoryList");
   });
-  
+  } else {
+  req.flash('success', 'Please login first!');
+  res.redirect('/');
+}
   });
   
   router.get('/catstatus', function(req, res, next) {
-    if (req.session.loggedin) {
+     if (req.session.loggedin) {
     var sql='UPDATE  category_master set cat_status='+ req.query.val +' where cat_id='+req.query.id;
     
    con.query(sql, function (err, data, fields) {
@@ -212,25 +222,27 @@ router.post('/save', upload.single('image'),(req,res)=>{
   });
   
   
-  router.post('/CategoryUpdate', upload.single('image'),(req,res)=>{
+  router.post('/CategoryUpdate', upload.single('image'),async(req,res)=>{
     //  sessions = req.session;
 
     if (req.session.loggedin) {
 
     console.log(JSON.stringify(req.file))
+   
     const name= req.body.name;
     const user_status=req.body.user_status;
     const admin_status=req.body.admin_status;
    
   
   if(req.file!=null){
-
-    // const image=req.file.path;
+    const myFile = req.file
+    const imageUrl = await uploadImage(myFile)
+    //const image=req.file.path;
     const image="uploads/"+req.file.filename;
 
   
     const insertQuery = "Update  category_master set cat_name=?,cat_image=?,user_status=?,admin_status=?  WHERE cat_id = ? ";
-    const values =[name,image,user_status,admin_status,req.query.id]
+    const values =[name,imageUrl,user_status,admin_status,req.query.id]
     con.query(insertQuery,values,(err,results,fields)=>{
       if(err){
         console.log('filed to update',err);

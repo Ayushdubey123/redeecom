@@ -33,10 +33,21 @@ router.use('/uploads', express.static('uploads'));
 router.use(sessions({
   secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
   saveUninitialized:true,
-  cookie: { maxAge:60000},
-  resave: false
+ 
+  resave: true
 }));
 
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.static(path.join(__dirname, 'public')));
+
+
+// const con = mysql.createConnection({
+//   socketPath     : '/cloudsql/redeecom:us-central1:myredeemocomdbinstrance',
+//    user:"root",
+//    password:"Ksingh@9825",
+//    database:"redeecomdb",  
+//  });
 
 const con=mysql.createConnection({
   host: "localhost",
@@ -47,11 +58,20 @@ const con=mysql.createConnection({
 
 });
 
-con.connect((err)=>{
-  if(err) throw err;
-  console.log("");
+router.get('/deliverydashboard',function(req,res,next){
+  res.render('deliveryboy_dashboard');
 });
 
+
+// router.get('/deliverydashboard', function(req, res, next) {
+//   // if (req.session.loggedin) {
+//    res.render('delivery_dashboard',{message : req.flash('message')});
+
+// // } else {
+// //   req.flash('success', 'Please login first!');
+// //   res.redirect('/');
+// // }
+// });
 
 
 
@@ -80,11 +100,11 @@ router.get('/DeliveryBoy_AddDeliveryBoy', function(req, res, next) {
     const delivery_email=req.body.delivery_email;
     const delivery_password=req.body.delivery_password;
     const delivery_status=req.body.delivery_status;
-    const delivery_commission=req.body.delivery_commission;
-    const deliveryboy_address=req.body.deliveryboy_address;
+    const commission=req.body.commission;
+    // const deliveryboy_address=req.body.deliveryboy_address;
   
-    const insertQuery = "INSERT INTO delivery_master (delivery_name,mobile_no,delivery_email,delivery_password,delivery_status,delivery_commission,deliveryboy_address) VALUES ? ";
-    const values =[[delivery_name,mobile_no,delivery_email,delivery_password,delivery_status,delivery_commission,deliveryboy_address]]
+    const insertQuery = "INSERT INTO delivery_master (delivery_name,mobile_no,delivery_email,delivery_password,delivery_status,commission) VALUES ? ";
+    const values =[[delivery_name,mobile_no,delivery_email,delivery_password,delivery_status,commission]]
     con.query(insertQuery,[values],(err,results,fields)=>{
       if(err){
         console.log('filed to insert',err);
@@ -110,6 +130,27 @@ router.get('/DeliveryBoy_AddDeliveryBoy', function(req, res, next) {
   }
   
   });
+
+  // 
+  router.get('/deliverystatus', function(req, res, next) {
+    if (req.session.loggedin) {
+    var sql='UPDATE  delivery_master set delivery_status='+ req.query.val +' where id='+req.query.id;
+    
+   con.query(sql, function (err, data, fields) {
+    if (err) throw err; 
+    req.flash('message','Data Updated Successfully');
+    return  res.redirect("deliverylist");
+  });
+
+} else {
+  req.flash('success', 'Please login first!');
+  res.redirect('/');
+}
+
+  
+
+  });
+  // 
   
   router.get('/editdelivery', function(req, res, next) {
     if (req.session.loggedin) {
@@ -119,7 +160,9 @@ router.get('/DeliveryBoy_AddDeliveryBoy', function(req, res, next) {
     var sql1='SELECT * FROM delivery_master where id='+req.query.id;
    con.query(sql1, function (err1, data1, fields1) {
     if (err1) throw err1;
-    res.render('Delivery_EditDelivery', { ListData: data1,Sidebar:data,message:req.flash('message')});
+    var gradedata=["A","B","C","D","E"];
+    
+    res.render('Delivery_EditDelivery', { ListData: data1,Sidebar:data,message:req.flash('message'),grade:gradedata});
   });
   });
 } else {
@@ -147,33 +190,38 @@ router.get('/DeliveryBoy_AddDeliveryBoy', function(req, res, next) {
   }
   });
 
-  router.post('/updateDelivery',(req,res)=>{
+  router.post('/updateDelivery',function(req,res){
     if (req.session.loggedin) {
     //  sessions = req.session;
     
 
     const delivery_name= req.body.delivery_name;
     const mobile_no=req.body.mobile_no;
-    
     const delivery_email=req.body.delivery_email;
     const delivery_password=req.body.delivery_password;
     const delivery_status=req.body.delivery_status;
-    const delivery_commission=req.body.delivery_commission;
-    const deliveryboy_address=req.body.deliveryboy_address;
-  
-    const insertQuery = "Update  delivery_master set delivery_name=?,mobile_no=?,delivery_email=?,delivery_password=?,delivery_status=?,delivery_commission=?,deliveryboy_address=? WHERE id = ?";
-    const values =[delivery_name,mobile_no,delivery_email,delivery_password,delivery_status,delivery_commission,deliveryboy_address,req.query.id]
+    const commission=req.body.commission;
 
+  
+    const insertQuery = "Update  delivery_master set delivery_name=?,mobile_no=?,delivery_email=?,delivery_password=?,delivery_status=?,commission=? WHERE id = ?";
+    const values =[delivery_name,mobile_no,delivery_email,delivery_password,delivery_status,commission,req.query.id]
+   
     con.query(insertQuery,values,(err,results,fields)=>{
       if(err){
         console.log('filed to insert',err);
         res.sendStatus(500)
+    
         return;
       }
    
       req.flash('message','Data Updated Successfully'); 
       return  res.redirect("/deliverylist");
+     
     });
+   
+    console.log("Updated Mobile No is "+mobile_no);
+  
+ 
   } else {
     req.flash('success', 'Please login first!');
     res.redirect('/');

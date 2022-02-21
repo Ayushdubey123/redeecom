@@ -26,7 +26,7 @@
     
     
     " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light">REDEECOM</span>
     </a>
 
@@ -70,25 +70,13 @@
             </a>
 
           </li>
-          <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
-            <li class="nav-item">
-              <a href="adminDashboard" class="nav-link">
-                <i class="nav-icon fab fa-firefox "></i>
-                <p>
-                  <%= data.att_name; %>
-
-                </p>
-              </a>
-
-            </li>
-            <% }) }%>
-
+         
 
               <!-- Main Sidebar Container -->
               <%-include('demoSidebar');-%>
 
                 <!-- Content Wrapper. Contains page content -->
-                <div class="content-wrapper">
+                <div class="content-wrapper" style="padding: 2%;">
                   <div class="alert">
                     <% if(message.length> 0) { %>
                       <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
@@ -96,9 +84,8 @@
                       </div>
                       <% }%>
                   </div>
-                  <form action="/addmedicine" method="post" enctype="multipart/form-data">
-                    <div class="card"
-                      style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
+                  <form action="/addmedicine?id=<%= newdata %>" method="post" enctype="multipart/form-data">
+                    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;">
                       <div class="div" style="margin-left: 10px; padding: 2%;">
                         Add Medicine&nbsp;<i class="fas fa-pills"></i>
                       </div>
@@ -163,9 +150,9 @@
                         <div class="col-6">
                           <div class="form-group">
 
-                            <label>Medicine Category:</label>
+                            <!-- <label>Medicine Category:</label>
                             <div>
-                              <!-- <input type="checkbox" data-toggle="switchbutton" checked data-style="ios"> -->
+                             
                               <select class="form-control" name="category" style="height: 3rem;"
                                 placeholder="Enter Medicine Category" required>
 
@@ -175,7 +162,7 @@
                                   </option>
                                   <% }) }%>
                               </select>
-                            </div>
+                            </div> -->
 
                           </div>
                         </div>
@@ -189,19 +176,25 @@
                             <div class="form-group">
                               <label>
                                 <%= data.parent_detail.att_name %>
+                               
                               </label>
+                                
                               <% if (data.parent_detail.att_type==0) {%>
                                 <input type="number" class="form-control"
-                                  name="<%= data.parent_detail.parent_detail.key_name %>" style="height: 3rem;"
+                                  name="<%= data.parent_detail.key_name %>" style="height: 3rem;"
                                   placeholder="Enter <%= data.parent_detail.att_name%>" required>
+                                  
+                                  
                                 <% }else if (data.parent_detail.att_type==1) { %>
                                   <input type="text" class="form-control" name="<%= data.parent_detail.key_name%>"
                                     style="height: 3rem;" placeholder="Enter <%= data.parent_detail.att_name%>"
                                     required>
+                                 
                                   <% }else if (data.parent_detail.att_type==2) { %>
                                     <textarea class="form-control" name="<%= data.parent_detail.key_name%>"
                                       style="height: 3rem;" placeholder="Enter <%= data.parent_detail.att_name%>"
                                       required></textarea>
+                                      
 
                                     <% }else if (data.parent_detail.att_type==3) { %>
                                       <select class="form-control select2" name="<%= data.parent_detail.key_name%>">
@@ -234,7 +227,7 @@
                                             <option>Select <%= data.parent_detail.att_name %>
                                             </option>
                                             <% if(attributesData.length !=0){ attributesData.forEach(function(attdata){
-                                              if(data.att_id==attdata.att_id){ %>
+                                              if(data.parent_detail.att_id==attdata.att_id){ %>
                                               <option>
                                                 <%= attdata.value %>
                                               </option>
@@ -249,6 +242,11 @@
                                             <% } %>
                             </div>
                           </div>
+                          <% if(data.parent_detail.att_number==1){ %>
+                          <div class="col-2" style="float: right; ">
+                            <a href="/AttributesData?id=<%= data.parent_detail.att_id  %>"> <i class="fas fa-plus"></i>add</a>
+                        </div>
+                        <% } %>
 
 
 
@@ -259,11 +257,12 @@
 
                           <div class="row" style="border:solid 1px; margin-Top:5px">
                             <div class="col-6"></div>
-                            <div class="col-6">
+                            <div class="col-4">
                               <div class="form-group">
                                 <label>
                                   <%= data.att_name %>
                                 </label>
+                              
                                 <% if (data.att_type==0) {%>
                                   <input type="number" class="form-control" name="<%= data.key_name %>"
                                     style="height: 3rem;" placeholder="Enter <%= data.att_name%>" required>
@@ -319,6 +318,12 @@
                                               <% } %>
                               </div>
                             </div>
+                            <% if(data.att_number==1){ %>
+                              <div class="col-2" style="float: right; ">
+                                <a href="/AttributesData?id=<%= data.att_id  %>"> <i class="fas fa-plus"></i>add</a>
+                            </div>
+                            <% } %>
+    
                           </div>
                           <% }) } %>
 
@@ -326,11 +331,16 @@
                             <% }) } %>
 
 
-                              <div class="row">
+                              <div class="row" style="padding-top: 2%;">
+                                <div class="col " style="display: flex;">
+                                  <div class="col-6">
                                 <button class="btn"
                                   style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white; margin-left: 5px;"><i
-                                    class="fas fa-medkit"></i> Add Medicine&nbsp;</button>
-                              </div>
+                                    class="fas fa-medkit"></i> Save and Add New&nbsp;</button>
+                                    </div>
+                                   
+                                  </div>
+                                  </div>
                     </div>
 
 
@@ -340,18 +350,13 @@
 
 
 
-
+                    </div>
 
 
 
                   <%-include('demoFooter');-%>
 
-                    <!-- Control Sidebar -->
-                    <aside class="control-sidebar control-sidebar-dark">
-                      <!-- Control sidebar content goes here -->
-                    </aside>
-                    <!-- /.control-sidebar -->
-                </div>
+              
 
                 <script>
                   $(function () {

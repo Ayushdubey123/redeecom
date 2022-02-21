@@ -10,6 +10,8 @@ const flash = require('connect-flash');
 const sessions = require('express-session');
 const cookieParser = require('cookie-parser');
 const multer  = require('multer')
+const {check, validationResult} = require('express-validator');
+
 
 
 const indexRouter = require('./routes/index');
@@ -22,8 +24,13 @@ const deliveryeRouter = require('./routes/delivery');
 const bannerRouter = require('./routes/banner');
 const usersRouter = require('./routes/usersRegistration');
 const apiRouter = require('./routes/api');
+const imageupload = require('./routes/imageupload');
+const order = require('./routes/order');
 
 
+// const { Storage } = require("@google-cloud/storage");
+
+const urlencodedParser = bodyParser.urlencoded({extended:false})
 
 require('dotenv').config();
 var app = express();
@@ -44,9 +51,19 @@ app.use('/', deliveryeRouter);
 app.use('/', bannerRouter);
 app.use('/', usersRouter);
 app.use('/', apiRouter);
+app.use('/', imageupload);
+app.use('/',order);
 
 
 
+
+// let data = (app1) => {
+//     app.post("/upload", controller.upload);
+//     app.get("/files", controller.getListFiles);
+//     app.get("/files/:name", controller.download);
+  
+//     app1.use(data);
+//   };
 
 
 

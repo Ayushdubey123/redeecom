@@ -74,7 +74,7 @@
         
         
         " class="brand-link">
-          <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+          <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
           <span class="brand-text font-weight-light">REDEECOM</span>
         </a>
       
@@ -118,27 +118,16 @@
                 </a>
       
               </li>
-              <% if(Sidebar.length!=0){ var i=1; Sidebar.forEach(function(data){ %>
-                <li class="nav-item">
-                  <a href="adminDashboard" class="nav-link">
-                    <i class="nav-icon fab fa-firefox "></i>
-                    <p>
-                      <%= data.att_name; %>
-      
-                    </p>
-                  </a>
-      
-                </li>
-                <% }) }%>
+              
       
       <!-- Main Sidebar Container -->
       <%-include('demoSidebar');-%>
     
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="padding: 1%;">
     
         <form action="/bannerUpdate?id=<%= ListData[0].id %>" method="post"  enctype="multipart/form-data">               
-                    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem;margin-top: 3rem;">
+                    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; ">
                         <div class="div" style="margin-left: 10px;  padding: 2%;">
                        Edit Banner
                         </div>
@@ -159,48 +148,19 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                   <label>Select Category:</label>
-                                
-                                  <select  class="form-control" name="cat_name" style="height: 3rem;"  required>
-                                    
-                                    <%
-                                    if(Sidebar.length!=0){
-                                    var i=1;
-                                    Sidebar.forEach(function(data){
-                                    %>
-                                    <option value="   <%= data.att_id; %>
-                                      ">   <%= data.att_name; %>
-                                    </option>
-                                    <% }) } %>
-                                </select>
+                              
                                
+                                <select class="form-control" name="category" style="height: 3rem;"
+                                placeholder="Enter Medicine Category" required>
+
+                                <% if(catdata.length!=0){ var i=1; catdata.forEach(function(data){ %>
+                                  <option value="<%=data.cat_id; %>">
+                                    <%=data.cat_name; %>
+                                  </option>
+                                  <% }) }%>
+                              </select>
                                 </div>
                                
-                              </div>
-                              
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>Admin View:</label>
-                                  <label class="switch">
-                                    <input name="admin_status" value="0" type="checkbox" <%= ListData[0].admin_status ==0 ?'checked' :'' %> >
-                                    <span class="slider round"></span>
-                                  </label>
-                                </div>
-                                
-                             
-                              
-                              </div>
-                              
-                              <div class="col-md-12">
-                                <div class="form-group">
-                                  <label>User View:</label>
-                                  <label class="switch">
-                                    <input name="user_status" type="checkbox" value="0"  <%= ListData[0].user_status ==0 ?'checked' :'' %>>
-                                    <span class="slider round"></span>
-                                  </label>
-                                </div>
-                                
-                             
-                              
                               </div>
     
     

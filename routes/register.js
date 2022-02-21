@@ -19,24 +19,36 @@ router.use(cookieParser());
 router.use(sessions({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
     saveUninitialized:true,
-    cookie: { maxAge:60000},
-    resave: false
+  
+    resave: true
   }));
+
+
+  router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.static(path.join(__dirname, 'public')));
+
   
+
+  const con = mysql.createConnection({
+    socketPath     : '/cloudsql/redeecom:us-central1:myredeemocomdbinstrance',
+     user:"root",
+     password:"Ksingh@9825",
+     database:"redeecomdb",
+   });
   
-  const con=mysql.createConnection({
-    host: "localhost",
-    user:"root",
-    password:"",
-    database:"redeecom",
-    multipleStatements:true
+  // const con=mysql.createConnection({
+  //   host: "localhost",
+  //   user:"root",
+  //   password:"",
+  //   database:"redeecom",
+  //   multipleStatements:true
+  // });
   
-  });
-  
-  con.connect((err)=>{
-    if(err) throw err;
-    console.log("");
-  });
+  // con.connect((err)=>{
+  //   if(err) throw err;
+  //   console.log("");
+  // });
 
 
 
@@ -64,6 +76,7 @@ router.get('/register', function(req, res, next) {
     inputData ={
       name: req.body.name,
       email: req.body.email,
+      mobile: req.body.mobile,
       password: bcrypt.hashSync(req.body.password, 10)
 
      
@@ -114,7 +127,7 @@ router.get('/register', function(req, res, next) {
   res.redirect('/');
 }
   });
-  
+
   router.get('/EditVendor', function(req, res, next) {
     if (req.session.loggedin) {
     var sql='SELECT * FROM attribute where att_position=0';
@@ -140,10 +153,11 @@ router.get('/register', function(req, res, next) {
     if (req.session.loggedin) {
    const name= req.body.name;
    const  email= req.body.email;
+   const  mobile= req.body.mobile;
     const password= bcrypt.hashSync(req.body.password, 10)
   
    const insertQuery = "Update  registration set name=?,email=?,password=?  WHERE id = ? ";
-   const values =[name,email,password,req.query.id]
+   const values =[name,email,mobile,password,req.query.id]
    con.query(insertQuery,values,(err,results,fields)=>{
      if(err){
        console.log('filed to update',err);

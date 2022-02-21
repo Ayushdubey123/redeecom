@@ -12,11 +12,8 @@
                
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="
-    
-    
-    " class="brand-link">
-      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="opacity: .8;">
+    <a href="" class="brand-link">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
       <span class="brand-text font-weight-light" >REDEECOM</span>
     </a>
 
@@ -60,33 +57,28 @@
                 </a>
                
               </li>
-              <%
-              if(Sidebar.length!=0){
-              var i=1;
-              Sidebar.forEach(function(data){
-              %>
-              <li class="nav-item">
-                <a href="adminDashboard" class="nav-link">
-                  <i class="nav-icon fab fa-firefox "></i>
-                  <p>
-                    <%= data.att_name; %>
-                  
-                  </p>
-                </a>
-               
-              </li>
-              <% }) }%>
+              
              
  
       <!-- Main Sidebar Container -->
       <%-include('demoSidebar');-%>
     
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="padding: 1%;">
         <br>
           <!-- In Add Attribute - If user can select any parent data then this data is made  child  and if user is select No then create Parent Box -->
-    
-                   <form action="/addattribute" method="post">
+
+          <% if(message.length > 0) { 
+                
+            %>
+
+
+         
+            <div class="alert alert-success">
+              <%= message %>
+            </div>
+            <% }%>
+                   <form action="/addattribute?id=<%=category %>" method="post">
                     <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; ">
                         <div class="div" style="margin-left: 10px; padding: 2%;">
                         Add Attributes&nbsp;<i class="fas fa-paperclip"></i>
@@ -95,16 +87,7 @@
                   <div class="card-body" style="margin-top:3rem; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
                         
                     
-                <% if(message.length > 0) { 
-                
-                  %>
-
-
-               
-                  <div class="alert alert-success">
-                    <%= message %>
-                  </div>
-                  <% }%>
+              
                     <div class="row">
                             <div class="col-sm-4">
                               <div class="form-group">

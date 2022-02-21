@@ -1,0 +1,166 @@
+<%-include('demoHeader'); -%>
+
+<!-- /.navbar -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="
+  
+  
+  " class="brand-link">
+    <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3" style="height:3rem; width: 4rem; border-radius: 5rem;">
+    <span class="brand-text font-weight-light">REDEECOM</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item menu-open">
+
+          <ul class="nav nav-treeview">
+
+          </ul>
+        </li>
+
+
+        <li class="nav-item">
+          <a href="adminDashboard" class="nav-link">
+            <i class="nav-icon fab fa-firefox "></i>
+            <p>
+              Dashboard
+
+            </p>
+          </a>
+
+        </li>
+    
+
+<%-include('demoSidebar'); -%>
+
+
+
+<div class="content-wrapper">
+  <div class="alert">
+    <% if(message.length > 0) { %>
+      <div class="alert alert-success" style="background-color: white; color: green; font-weight: 800;">
+        <%= message %>
+      </div>
+      <% }%>
+    </div>
+    <div class="row">
+        <div class="col-12">
+    <div class="card" style="font-size: 2rem; font-weight: 800;  margin-left: 2rem; margin-right: 2rem; height: 5rem; margin-top: 3rem;">
+        <div class="div" style="margin-left: 15px;  padding: 2%; ">
+       Promotional Banner List
+       <button  class="btn"  onclick="location.href='addPromotional_products'" style="margin-top: 10px; background-color: rgb(55, 26, 82); color: white;  float: right;margin-left: -15px;"><i class="fas fa-plus-circle"></i> Add Promotional Banner</button>
+
+        </div>
+    </div>
+
+
+        </div>
+
+
+      
+    </div>
+
+    <!--  -->
+    <div class="card-body" style="margin-top:30px; background-color: rgb(255, 255, 255); margin-left: 2rem; margin-right: 2rem;">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>#</th> 
+             
+              <th>Banner Image</th>
+              <th>Status</th>
+              <th>Action</th>
+            
+          
+            </tr>
+            </thead>
+            <tbody>
+              <%
+              if(ListData.length!=0){
+              var i=1;
+              ListData.forEach(function(data1){
+              %>
+         
+            <tr>
+              <td><%=i++; %></td>
+              <td><img src="<%=data1.image; %>" height="50" width="50"></td>
+              
+              <!-- <td>     <a href="/bannerstatus?id=<%=data1.id; %>&val=<%=data1.banner_status==0 ?1:0; %>" class="btn " style=" background-color: rgb(107, 231, 118); border-radius: 5rem;" >  <%= data1.banner_status == 0 ?'Publish' :'Unpublish' %></a></td> -->
+              <td><a href="/promotionalbannerstatus?id=<%=data1.id; %>&val=<%=data1.status==0 ?1:0; %>" class="btn " style=" background-color: rgb(107, 231, 118); border-radius: 5rem;" >  <%= data1.status == 0 ?'Publish' :'Unpublish' %></a></td> 
+              <td>
+                  
+              
+                <a href="/Editpromotionalbanner?id=<%=data1.id; %>"><i class="fas fa-edit" style=" color:rgb(37, 112, 250); font-size: 1.5rem;"></i></a>&nbsp;
+                <a href="/Deletepromotionalbanner?id=<%=data1.id; %>"><i class="fas fa-trash-alt" style=" color:rgb(240, 46, 21) ; font-size: 1.5rem;"></i></a>&nbsp;
+                
+              </td>
+              
+          
+            </tr>
+         
+            
+         
+            <% }) }%>
+          
+            </tbody>
+            <tfoot>
+           
+            </tfoot>
+          </table>
+          
+      </div> 
+
+    <!--  -->
+    
+
+  
+</div>
+<%-include('demoFooter');-%>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            // "buttons": ["excel","pdf","print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
+<!--  -->

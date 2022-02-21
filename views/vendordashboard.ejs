@@ -1,0 +1,229 @@
+<%-include('demoHeader'); -%>
+
+
+         
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="" class="brand-link">
+      <img src="dist/img/redeecom.jpg" alt="Redeecom" class="brand-image img-circle elevation-3"  style="height:3rem; width: 4rem; border-radius: 5rem;">
+      <span class="brand-text font-weight-light" >REDEECOM</span>
+    </a>
+  
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      
+  
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item menu-open">
+          
+                <ul class="nav nav-treeview">
+                  
+                </ul>
+              </li>
+             
+             
+              <li class="nav-item">
+                <a href="adminDashboard" class="nav-link">
+                  <i class="fas fa-building">&nbsp;</i>
+                  <i class="right fas fa-angle-right"></i>
+                  <p>
+                 Dashboard
+                  
+                  </p>
+                </a>
+               
+              </li>
+             
+  
+  
+  <%-include('demoSidebar'); -%>
+
+  <div class="content-wrapper" style="padding: 2%;">
+    
+  <form action="/vendor?id=<%= vendor %>" method="post" >
+    <div class="row" style="padding-top: 1%; ">
+        
+        <div class="col-4">
+          <div class="card" style="background-color: white; color: black; height: 8rem;">
+            <div class="row">
+              <div class="col-12">
+            <label style="margin-left: 1.5rem; font-size: 1.5rem;" >Orders</label>
+            <div class="container">
+                <div class="row" >
+                  <div class="col"  style="display: flex; padding-top: 2%;">
+                    <div class="col-3">
+                      <div class="doller" style="height: 3.5rem; width: 5.5rem; background-color: rgb(5, 67, 78); color: rgb(255, 255, 255); border-radius:10%;">
+                        <!-- <i class="fas fa-dollar-sign" style=" padding: 2%; font-size: 2rem; height:3rem; width: 4rem;  background-color: rgb(78, 5, 62);  color: white; border-radius: 5px;"></i> -->
+                        <div style="padding-left:30%;padding-top: 15%; border-radius:20%; ">
+                        <i class="fas fa-shopping-cart" style="font-size: 2rem;" ></i>    
+                            
+                    </div>
+                      </div>
+                    </div>
+                      <div class="col-9" style="">
+                        <label>Total Order</label>
+           
+                       
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                 
+              
+              
+        </div>
+        <!-- <div class="row">
+          <div class="col-6">
+          
+          </div>
+         
+          </div> -->
+          
+         
+            </div>
+          </div>
+        </div>  
+        <div class="col-4">
+          <div class="card" style="background-color: white; color: black; height: 8rem;">
+            <label style="margin-left: 1.5rem; font-size: 1.5rem;">Amount</label>
+           <!-- <i class="far fa-money-bill-alt"  style=" margin-left:1.5rem; font-size: 2rem;width: 4rem; padding: 0.5rem;  padding-right:2%; background-color: rgb(78, 5, 62);  color: white; border-radius: 5px;"></i> -->
+           <div class="container">
+            <div class="row" >
+              <div class="col"  style="display: flex; padding-top: 2%;">
+                <div class="col-3">
+                    <div class="doller" style="height: 3.5rem; width: 5.5rem; background-color: rgb(5, 67, 78); color: rgb(255, 255, 255); border-radius:10%;">
+                    <!-- <i class="fas fa-dollar-sign" style=" padding: 2%; font-size: 2rem; height:3rem; width: 4rem;  background-color: rgb(78, 5, 62);  color: white; border-radius: 5px;"></i> -->
+                    <div style="padding-left:30%;padding-top: 15%; border-radius:20%; ">
+                    <i class="far fa-money-bill-alt" style="font-size: 2rem;" ></i>    
+                      </div>
+                  </div>
+                </div>
+                  <div class="col-9" style="">
+                    <label>Total Amount</label>
+       
+                    
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+        </div>  
+        <div class="col-4">
+          <div class="card" style="background-color: white; color: black; height: 8rem;">
+            <label style="margin-left: 1.5rem; font-size: 1.5rem;">Commission</label>
+           <!-- <i class="far fa-money-bill-alt"  style=" margin-left:1.5rem; font-size: 2rem;width: 4rem; padding: 0.5rem;  padding-right:2%; background-color: rgb(78, 5, 62);  color: white; border-radius: 5px;"></i> -->
+           <div class="container">
+            <div class="row" >
+              <div class="col"  style="display: flex; padding-top: 2%;">
+                <div class="col-3">
+                  <div class="doller" style="height: 3.5rem; width: 5.5rem; background-color: rgb(5, 67, 78); color: rgb(255, 255, 255); border-radius:10%;">
+                    <!-- <i class="fas fa-dollar-sign" style=" padding: 2%; font-size: 2rem; height:3rem; width: 4rem;  background-color: rgb(78, 5, 62);  color: white; border-radius: 5px;"></i> -->
+                    <div style="padding-left:30%;padding-top: 15%; border-radius:20%; ">
+                    <i class="fas fa-star" style="font-size: 2rem;" ></i>    
+                      </div>
+                  </div>
+                </div>
+                  <div class="col-9" >
+                    <label>Total Commission</label>
+       
+               
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+        </div>  
+        </div>
+      
+</form>
+<table id="example1" class="table table-bordered table-striped" style="padding-top:3% ;">
+  <thead>
+  <tr>
+  
+    <th>Sr.no</th> 
+    <th>Vendor</th> 
+    <th>User</th> 
+    <th>Date</th>
+    <th>Order Id</th>
+   
+    <th>Amount</th>
+    <th>Status</th>        
+    <th></th>
+
+  </tr>
+  </thead>
+  <tbody>
+    
+    <%
+    if(ListData.length!=0){
+    var i=1;
+    ListData.forEach(function(data){
+    %>
+
+  <tr>
+   
+    <td><%= i++; %></td>
+    <td><%= data.vendor_id%></td>
+    <td><%= data.userid%></td>
+    <td><%= data.order_date%></td>
+    <td><%= data.order_id%></td>
+   
+    <td><%= data.total_amount%></td>
+ 
+      
+          
+              <td>
+                  <!-- <div class="buttom" style="display: flex;">
+                      <button class="btn" style="background-color:rgb(57, 168, 57) ; color: white;">Approve</button>&nbsp;&nbsp;
+                      <button class="btn" style="background-color: rgb(228, 74, 74); color: white; ">Reject</button>
+                          </div>   -->
+                          <%= data.order_status%>
+              </td>
+
+              <td>
+                <a href="/order?id=<%= data.order_id %>" style=" color: rgb(106, 84, 206); height: 3rem; width: 3rem; border-radius: 5px;">View Details</a>
+                </td>
+  </tr>
+  <% }) }%>
+
+   
+ 
+
+  </tbody>
+  <tfoot>
+ 
+  </tfoot>
+</table>
+
+</div>
+
+
+
+  <%-include('demoFooter');-%>
+<!-- /.register-box -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+</body>
+</html>
